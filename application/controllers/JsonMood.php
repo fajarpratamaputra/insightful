@@ -20,7 +20,7 @@ class JsonMood extends CI_Controller {
 				'email' => $mo->employee_email,
 				'mood' => $mo->mood,
 				'reason' => $mo->reason,
-				'date' => $mo->date_created
+				'date' => $mo->date
 			];
 		}
 
@@ -45,7 +45,7 @@ class JsonMood extends CI_Controller {
 				'email' => $mo->employee_email,
 				'mood' => $mo->mood,
 				'reason' => $mo->reason,
-				'date' => $mo->date_created
+				'date' => $mo->date
 			];
 		}
 
@@ -74,21 +74,29 @@ class JsonMood extends CI_Controller {
 		$mood  = $this->input->post('mood');
 		$reason  = $this->input->post('reason');
 		$datetime = date('Y-m-d', strtotime($this->input->post('datetime')));
-
+		$mood_all = $this->m_mood->get_all();
 		$data = array(
 			'employee_email' 	=> $email,
 			'mood' 				=> $mood,
 			'reason' 			=> $reason,
-			'date_created' 		=> $datetime,
+			'date' 				=> $datetime,
 		);
+		$res = null;
+		foreach($mood_all as $ma) {
+			if(($email == $ma->employee_email) && ($datetime == date('Y-m-d', strtotime($ma->date)))) {
+				$id_mood = $this->db->where('employee_email', $email)->limit('1')->get('mood_record')->row();
+				$id['id'] = $id_mood->id;
+				$res = $this->m_mood->update_mood($data, $id);
+			} else {
+				$res = $this->m_mood->add_mood($data);
+			}
+		}
 
-		$res = $this->m_mood->add_mood($data);
-
-		if(empty($res)) {
+		if(empty($data)) {
 			$this->output
 			->set_status_header(500)
 			->set_content_type('application/json', 'utf-8')
-			->set_output(json_encode($res, JSON_PRETTY_PRINT))
+			->set_output(json_encode($data, JSON_PRETTY_PRINT))
 			->_display();
 			exit;
 		}
