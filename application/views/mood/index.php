@@ -34,46 +34,33 @@
 								</div>
 							</div>
 							<div class="card-body timeline pb-2">
+							<?php
+                                $no = 1;
+                                foreach($mood as $m){
+                        	?>
 								<div class="timeline-panel align-items-end">
 									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/1.jpg">
+										<h5><?=$no++?></h5>
 									</div>
 									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Mail</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Telkom</p>
-									</div>
-									<p class="mb-0 fs-14">2m ago</p>
-								</div>
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/2.jpg">
+										<h5 class="mb-1"><?=$m->employee_email?></h5>
 									</div>
 									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Mail</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Telkom</p>
+										<h5 class="mb-1">
+											<?php 
+												if($m->mood == 1) {
+													echo "Sedih";
+												} elseif($m->mood == 2) {
+													echo "Biasa";
+												} elseif($m->mood == 3) {
+													echo "Senang";
+												}
+											?>
+										</h5>
 									</div>
-									<p class="mb-0 fs-14">5m ago</p>
+									<p class="mb-0 fs-14"><?=$m->date_created?></p>
 								</div>
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/3.jpg">
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Mail</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Telkom</p>
-									</div>
-									<p class="mb-0  fs-14">8m ago</p>
-								</div>
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/4.jpg">
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Mail</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Telkom</p>
-									</div>
-									<p class="mb-0 fs-14">12m ago</p>
-								</div>
+							<?php }?>
 							</div>
 							<div class="card-footer border-0 pt-0 text-center">
 								<a href="javascript:void(0);" class="btn-link">View more <i class="fa fa-angle-down ml-2 scale-2"></i></a>

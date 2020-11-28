@@ -9,7 +9,7 @@ class M_consultation extends CI_model{
     }
 
     public function get_all() {
-        $query = $this->db->get($this->table);
+        $query = $this->db->query('select distinct email_user from consultation_report');
         return $query->result();
     }
 

@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mood extends CI_Controller {
+class Consultation extends CI_Controller {
 
 	public function __construct()
 	{
 		parent ::__construct();
 		//load model
 		$this->load->library('template');
-		$this->load->model('m_mood');
+		$this->load->model('m_consultation');
 		if($this->session->userdata('status') != "login"){
 			redirect(base_url("auth"));
 		}
@@ -16,8 +16,8 @@ class Mood extends CI_Controller {
 
 	public function index()
 	{
-		$data['mood'] = $this->m_mood->get_all();
-		$this->template->view('mood/index',$data);
+		$data['consultation'] = $this->m_consultation->get_all();
+		$this->template->view('consultation/index', $data);
 	}
 
 }

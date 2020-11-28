@@ -46,6 +46,11 @@
 							<span class="nav-text">Mood Record</span>
 						</a>
                     </li>
+					<li><a class="ai-icon" href="<?=base_url()?>consultation" aria-expanded="false">
+							<i class="flaticon-381-television"></i>
+							<span class="nav-text">Report Consultation</span>
+						</a>
+                    </li>
                     <li><a class="ai-icon" href="<?=base_url()?>auth/logout" aria-expanded="false">
 							<i class="flaticon-381-layer-1"></i>
 							<span class="nav-text">Sign out</span>

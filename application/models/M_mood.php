@@ -8,7 +8,7 @@ class M_mood extends CI_model{
         $this->table = "mood_record";
     }
 
-    public function get_author_all() {
+    public function get_all() {
         $query = $this->db->get($this->table);
         return $query->result();
     }
