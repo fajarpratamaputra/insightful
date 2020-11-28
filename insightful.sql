@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.30)
 # Database: insightful
-# Generation Time: 2020-11-27 03:21:38 +0000
+# Generation Time: 2020-11-28 03:39:10 +0000
 # ************************************************************
 
 
@@ -54,12 +54,22 @@ CREATE TABLE `category_chat_group` (
   `title` varchar(50) DEFAULT NULL,
   `psycologist_id` int(11) DEFAULT NULL,
   `status` tinyint(11) DEFAULT NULL,
-  `datetime` datetime DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `time` time DEFAULT NULL,
   `is_publish` tinyint(11) DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
+LOCK TABLES `category_chat_group` WRITE;
+/*!40000 ALTER TABLE `category_chat_group` DISABLE KEYS */;
+
+INSERT INTO `category_chat_group` (`id`, `title`, `psycologist_id`, `status`, `date`, `time`, `is_publish`, `date_created`)
+VALUES
+	(3,'apa',2,1,'2020-11-27','00:00:00',NULL,NULL);
+
+/*!40000 ALTER TABLE `category_chat_group` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table counseling
@@ -152,12 +162,22 @@ DROP TABLE IF EXISTS `mood_record`;
 
 CREATE TABLE `mood_record` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `employee_id` int(11) DEFAULT NULL,
+  `employee_email` varchar(30) DEFAULT NULL,
   `mood` int(11) DEFAULT NULL,
-  `date_created` int(11) DEFAULT NULL,
+  `reason` text,
+  `date_created` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
+LOCK TABLES `mood_record` WRITE;
+/*!40000 ALTER TABLE `mood_record` DISABLE KEYS */;
+
+INSERT INTO `mood_record` (`id`, `employee_email`, `mood`, `reason`, `date_created`)
+VALUES
+	(3,'fajarpratamap@gmail.com',2,'hari ini saya masih bisa tersenyum','2020-11-28 00:00:00');
+
+/*!40000 ALTER TABLE `mood_record` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table news
@@ -182,8 +202,8 @@ LOCK TABLES `news` WRITE;
 
 INSERT INTO `news` (`id`, `title`, `description`, `banner`, `category`, `status`, `author`, `date_created`)
 VALUES
-	(5,'tes saja','<p>tes&nbsp;</p><p><br></p>',NULL,0,'0','','2020-11-27 10:25:55'),
-	(6,'apa lagi','<p>tes juga nda papa ji</p>','file-1606442695.png',1,'1','tes','2020-11-27 10:54:20');
+	(5,'tes saja','<p>tes</p>','file-1606486877.png',1,'1','tes','2020-11-28 00:51:22'),
+	(6,'apa lagi','<p>tes juga nda papa ji</p>','file-1606442695.png',1,'0','tes','2020-11-28 00:51:37');
 
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -27,11 +27,22 @@ class M_news extends CI_model{
         return $query->result();
     }
 
-    public function get_news_detail($title) {
+    public function get_news_search($title) {
         $query =$this->db->select('news.*, category.category as cat')
                 ->from('news')
                 ->join('category','category.id = news.category')
                 ->like('news.title', $title)
+                ->order_by('news.id', 'DESC')
+                ->limit(10)
+                ->get();
+        return $query->result();
+    }
+
+    public function get_news_detail($id) {
+        $query =$this->db->select('news.*, category.category as cat')
+                ->from('news')
+                ->join('category','category.id = news.category')
+                ->where('news.id', $id)
                 ->order_by('news.id', 'DESC')
                 ->limit(10)
                 ->get();
