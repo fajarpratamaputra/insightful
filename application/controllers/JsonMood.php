@@ -13,15 +13,49 @@ class JsonMood extends CI_Controller {
 
 	public function getMood()
 	{
-		$news = $this->m_news->get_news_category();
-		foreach($news as $ne) {
+		$mood = $this->m_mood->get_all();
+		foreach($mood as $mo) {
 			$res[] = [
-				'title' => $ne->title,
-				'banner'=> base_url('assets/profile/').$ne->banner,
-				'description' => $ne->description,
-				'category' => $ne->cat,
-				'author' => $ne->author
+				'id'	=> $mo->id,
+				'email' => $mo->employee_email,
+				'mood' => $mo->mood,
+				'reason' => $mo->reason,
+				'date' => $mo->date_created
 			];
+		}
+
+		$data['data'] = $res; 
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($data, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
+	public function getMoodbyEmail()
+	{
+		$email = $this->input->post('email');
+		$mood = $this->m_mood->get_by_email($email);
+		$data['data'] = null; 
+		foreach($mood as $mo) {
+			$res[] = [
+				'id'	=> $mo->id,
+				'email' => $mo->employee_email,
+				'mood' => $mo->mood,
+				'reason' => $mo->reason,
+				'date' => $mo->date_created
+			];
+		}
+
+		if(empty($mood)) {
+			$this->output
+			->set_status_header(200)
+			->set_content_type('application/json', 'utf-8')
+			->set_output(json_encode($data, JSON_PRETTY_PRINT))
+			->_display();
+			exit;
 		}
 
 		$data['data'] = $res; 

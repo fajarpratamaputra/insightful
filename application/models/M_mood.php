@@ -13,6 +13,12 @@ class M_mood extends CI_model{
         return $query->result();
     }
 
+    public function get_by_email($email) {
+        $query = $this->db->where('employee_email', $email)
+                ->get($this->table);
+        return $query->result();
+    }
+
     public function add_mood($data) {
         $insert = $this->db->insert($this->table, $data);
         if ($insert) :
