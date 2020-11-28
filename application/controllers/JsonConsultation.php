@@ -9,6 +9,7 @@ class JsonConsultation extends CI_Controller {
 		//load model
 		$this->load->library('template');
 		$this->load->model('m_consultation');
+		date_default_timezone_set("Asia/Makassar");
 	}
 
 	// public function getMood()
@@ -46,6 +47,7 @@ class JsonConsultation extends CI_Controller {
 			'email_psikolog' 	=> $email_psikolog,
 			'token_psikolog' 	=> $token_psikolog,
 			'report' 			=> $report,
+			'datetime'			=> date('Y-m-d H:i:s')
 		);
 
 		$res = $this->m_consultation->add_consultation($data);
