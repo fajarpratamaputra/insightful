@@ -28,176 +28,50 @@
 											</tr>
 										</thead>
 										<tbody>
+											<?php
+                                                $no = 0;
+                                                foreach($chatgroup as $chat){
+                                            ?>
 											<tr>
 												<td>
 													<div class="media align-items-center">
 														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no">mental illness</h4>
+															<h4 class="text-black font-w600 mb-1 wspace-no"><?=$chat->title?></h4>
 														</div>
 													</div>
 												</td>
 												<td class="d-none d-lg-table-cell">
-													<span>Sunday, 24 July 2020 04:55 PM</span>
+													<span><?=date('D, M Y', strtotime($chat->date)).' '.$chat->time?></span>
 												</td>
 												<td>
 													<div class="media align-items-center">
 														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no">Dr. Zakiah Daradjat</h4>
+															<h4 class="text-black font-w600 mb-1 wspace-no"><?=$chat->fullname?></h4>
 														</div>
 													</div>
 												</td>
 												<td>
 													<div class="media align-items-center">
 														<div class="media-body">
-															<span>Accept</span>
+															<span><?php echo ($chat->status == 1 ? 'Accept' : 'Waiting' ); ?></span>
 														</div>
 													</div>
 												</td>
 												<td>
-													<div class="d-flex">
-														<a href="javascript:;" class="btn btn-primary btn-sm px-4">Publish</a>
-														<a href="javascript:;" class="btn btn-primary btn-sm px-4">Cancel</a>
-														<a href="<?=base_url()?>chatgroup/chat" class="btn btn-primary btn-sm px-4">Detail</a>
-														<a href="javascript:;" class="btn btn-danger  btn-sm px-4">Delete</a>
-													</div>
+													<div class="dropdown ml-auto text-right">
+														<div class="btn-link" data-toggle="dropdown">
+															<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
+														</div>
+														<div class="dropdown-menu dropdown-menu-right">
+															<a class="dropdown-item" href="<?=base_url('category/edit/')?>">Publish</a>
+															<a class="dropdown-item" href="<?=base_url('chatGroup/edit/'.$chat->id)?>">Edit</a>
+															<a class="dropdown-item" href="<?=base_url()?>chatGroup/chat">Detail</a>
+															<a class="dropdown-item" href="<?=base_url('chatGroup/delete/'.$chat->id)?>">Delete</a>
+														</div>
+													</div> 
 												</td>
 											</tr>
-											<tr>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no">mental illness</h4>
-														</div>
-													</div>
-												</td>
-												<td class="d-none d-lg-table-cell">
-													<span>Sunday, 24 July 2020 04:55 PM</span>
-												</td>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no">Dr. Zakiah Daradjat</h4>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<span>Waiting</span>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="d-flex">
-														<a href="javascript:;" class="btn btn-primary btn-sm px-4">Publish</a>
-														<a href="javascript:;" class="btn btn-primary btn-sm px-4">Cancel</a>
-														<a href="<?=base_url()?>chatgroup/chat" class="btn btn-primary btn-sm px-4">Detail</a>
-														<a href="javascript:;" class="btn btn-danger  btn-sm px-4">Delete</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no">mental illness</h4>
-														</div>
-													</div>
-												</td>
-												<td class="d-none d-lg-table-cell">
-													<span>Sunday, 24 July 2020 04:55 PM</span>
-												</td>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no">Dr. Zakiah Daradjat</h4>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<span>Accept</span>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="d-flex">
-														<a href="javascript:;" class="btn btn-primary btn-sm px-4">Publish</a>
-														<a href="javascript:;" class="btn btn-primary btn-sm px-4">Cancel</a>
-														<a href="<?=base_url()?>chatgroup/chat" class="btn btn-primary btn-sm px-4">Detail</a>
-														<a href="javascript:;" class="btn btn-danger  btn-sm px-4">Delete</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no">mental illness</h4>
-														</div>
-													</div>
-												</td>
-												<td class="d-none d-lg-table-cell">
-													<span>Sunday, 24 July 2020 04:55 PM</span>
-												</td>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no">Dr. Zakiah Daradjat</h4>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<span>Accept</span>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="d-flex">
-														<a href="javascript:;" class="btn btn-primary btn-sm px-4">Publish</a>
-														<a href="javascript:;" class="btn btn-primary btn-sm px-4">Cancel</a>
-														<a href="<?=base_url()?>chatgroup/chat" class="btn btn-primary btn-sm px-4">Detail</a>
-														<a href="javascript:;" class="btn btn-danger  btn-sm px-4">Delete</a>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no">mental illness</h4>
-														</div>
-													</div>
-												</td>
-												<td class="d-none d-lg-table-cell">
-													<span>Sunday, 24 July 2020 04:55 PM</span>
-												</td>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no">Dr. Zakiah Daradjat</h4>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="media align-items-center">
-														<div class="media-body">
-															<span>Accept</span>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="d-flex">
-														<a href="javascript:;" class="btn btn-primary btn-sm px-4">Publish</a>
-														<a href="javascript:;" class="btn btn-primary btn-sm px-4">Cancel</a>
-														<a href="<?=base_url()?>chatgroup/chat" class="btn btn-primary btn-sm px-4">Detail</a>
-														<a href="javascript:;" class="btn btn-danger  btn-sm px-4">Delete</a>
-													</div>
-												</td>
-											</tr>
+											<?php } ?>
 										</tbody>
 									</table>
 								</div>

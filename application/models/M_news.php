@@ -20,6 +20,7 @@ class M_news extends CI_model{
         $query =$this->db->select('news.*, category.category as cat')
                 ->from('news')
                 ->join('category','category.id = news.category')
+                ->where('status', '1')
                 ->order_by('news.id', 'DESC')
                 ->limit(10)
                 ->get();
