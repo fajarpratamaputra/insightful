@@ -103,4 +103,38 @@ class JsonNews extends CI_Controller {
 		exit;
 	}
 
+	public function getNewsbyCategory()
+	{
+		$id_category = $this->input->post('id_category');
+		$news = $this->m_news->get_news_detail_category($id_category);
+		$data['data'] = 'null'; 
+		if(empty($news)) {
+			$this->output
+			->set_status_header(200)
+			->set_content_type('application/json', 'utf-8')
+			->set_output(json_encode($data, JSON_PRETTY_PRINT))
+			->_display();
+			exit;
+		}
+		foreach($news as $ne) {
+			$res[] = [
+				'id' => $ne->id,
+				'title' => $ne->title,
+				'banner'=> base_url('assets/profile/').$ne->banner,
+				'description' => $ne->description,
+				'category' => $ne->cat,
+				'author' => $ne->author
+			];
+		}
+
+		$data['data'] = $res; 
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($data, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
 }

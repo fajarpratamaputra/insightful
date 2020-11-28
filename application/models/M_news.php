@@ -49,6 +49,16 @@ class M_news extends CI_model{
         return $query->result();
     }
 
+    public function get_news_detail_category($id_category) {
+        $query =$this->db->select('news.*, category.category as cat')
+                ->from('news')
+                ->join('category','category.id = news.category')
+                ->where('news.category', $id_category)
+                ->order_by('news.id', 'DESC')
+                ->get();
+        return $query->result();
+    }
+
     public function add_news($data) {
         $insert = $this->db->insert($this->table, $data);
         if ($insert) :
