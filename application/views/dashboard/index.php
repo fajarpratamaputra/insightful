@@ -9,7 +9,7 @@
 								<p class="font-w100 fs-20 text-black">Mood Grafik</p>
 								<div class="row mx-0">
 									<div class="col-sm-12 col-lg-12 px-0">
-										<canvas id="ticketSold" height="150"></canvas>
+										<canvas id="moodGrafik" height="150"></canvas>
 									</div>
 								</div>
 							</div>
@@ -146,7 +146,7 @@
     
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script type="text/javascript">
-    var ctx = document.getElementById('ticketSold').getContext('2d');
+    var ctx = document.getElementById('moodGrafik').getContext('2d');
     var chart = new Chart(ctx, {
     type: 'bar',
     data: {
