@@ -19,7 +19,7 @@
 					<div class="col-xl-6 col-xxxl-12 col-lg-6">
 						<div class="card">
                             <div class="card-header border-0 pb-0">
-                                <h4 class="card-title">Timeline</h4>
+                                <h4 class="card-title">Last Login Employee</h4>
                             </div>
                             <div class="card-body">
                                 <div id="DZ_W_TimeLine" class="widget-timeline dz-scroll" style="height:370px;">
@@ -43,7 +43,7 @@
 					<div class="col-xl-6 col-xxxl-12 col-lg-6">
 					<div class="card">
                             <div class="card-header border-0 pb-0">
-                                <h4 class="card-title">Timeline 2</h4>
+                                <h4 class="card-title">Last Login Psikolog</h4>
                             </div>
                             <div class="card-body">
                                 <div id="DZ_W_TimeLine1" class="widget-timeline dz-scroll style-1" style="height:370px;">
