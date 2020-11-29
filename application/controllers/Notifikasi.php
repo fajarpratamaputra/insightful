@@ -63,7 +63,7 @@ class Notifikasi extends CI_Controller {
 			"registration_ids":['.$token.'],
 			"notification": {
 				"title":"insightful",
-				"body":"'.$isi_pesan.'"
+				"body":"'.$isi_pesan.'",
 			}
 		  }',
 		CURLOPT_HTTPHEADER => array(

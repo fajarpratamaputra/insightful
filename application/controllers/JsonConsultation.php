@@ -9,6 +9,7 @@ class JsonConsultation extends CI_Controller {
 		//load model
 		$this->load->library('template');
 		$this->load->model('m_consultation');
+		$this->load->model('m_kuesioner');
 		date_default_timezone_set("Asia/Makassar");
 	}
 
@@ -81,6 +82,40 @@ class JsonConsultation extends CI_Controller {
 		$response = curl_exec($curl);
 
 		curl_close($curl);
+
+		if(empty($res)) {
+			$this->output
+			->set_status_header(500)
+			->set_content_type('application/json', 'utf-8')
+			->set_output(json_encode($res, JSON_PRETTY_PRINT))
+			->_display();
+			exit;
+		}
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($data, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
+	public function insertKuesioner()
+	{
+		$email_user 	 = $this->input->post('email_user');
+		$email_psikolog  = $this->input->post('email_psikolog');
+		$token_psikolog  = $this->input->post('token_psikolog');
+		$report 		 = $this->input->post('report');
+
+		$data = array(
+			'email_user' 		=> $email_user,
+			'email_psikolog' 	=> $email_psikolog,
+			'token_psikolog' 	=> $token_psikolog,
+			'report' 			=> $report,
+			'datetime'			=> date('Y-m-d H:i:s')
+		);
+
+		$res = $this->m_kuesioner->add_consultation($data);
 
 		if(empty($res)) {
 			$this->output

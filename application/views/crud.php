@@ -126,13 +126,13 @@
     var lastIndex = 0;
 
     // Get Data
-    firebase.database().ref('students/').on('value', function (snapshot) {
+    firebase.database().ref('Users/').on('value', function (snapshot) {
         var value = snapshot.val();
         var htmls = [];
         $.each(value, function (index, value) {
             if (value) {
                 htmls.push('<tr>\
-                <td>' + value.nis + '</td>\
+                <td>' + value.email + '</td>\
                 <td>' + value.name + '</td>\
                 <td>' + value.age + '</td>\
                 <td><button data-toggle="modal" data-target="#update-modal" class="btn btn-info updateStudent" data-id="' + index + '">Update</button>\
@@ -162,8 +162,8 @@
         }
 
         var userID = result;
-        firebase.database().ref('PsikologStatus/' + userID).set({
-            email: name,
+        firebase.database().ref('Users/' + userID).set({
+            email: 'fajar',
             login: 'false',
             status: 1,
         });
