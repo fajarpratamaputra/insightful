@@ -12,3 +12,4 @@
 
 <link rel="stylesheet" href="<?=base_url('assets')?>/vendor/select2/css/select2.min.css">
 <link href="<?=base_url('assets')?>/vendor/summernote/summernote.css" rel="stylesheet">
+<link href="<?=base_url('assets')?>/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">

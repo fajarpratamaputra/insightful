@@ -137,19 +137,22 @@ class JsonConsultation extends CI_Controller {
 
 	public function getKuesioner()
 	{
-		$email = $this->input->post('email');
+		// $email = $this->input->post('email');
 		$email_psikolog = $this->input->post('email_psikolog');
 		$note = 'awal';
-		$kuesioner = $this->m_kuesioner->get_by_email($email, $email_psikolog, $note);
+		$kuesioner = $this->m_kuesioner->get_by_email($email_psikolog, $note);
 		$data['data'] = null; 
 		if(!empty($kuesioner)) {
-			$res[] = [
-				'id'			=> $kuesioner->id,
-				'email_user' 		=> $kuesioner->email_user,
-				'email_psikolog'=> $kuesioner->email_psikolog,
-				'report' 		=> $kuesioner->report,
-				'datetime' 		=> $kuesioner->datetime
-			];
+			foreach($kuesioner as $kue) {
+				$res[] = [
+					'id'			=> $kue->id,
+					'email_user' 		=> $kue->email_user,
+					'email_psikolog'=> $kue->email_psikolog,
+					'report' 		=> $kue->report,
+					'datetime' 		=> $kue->datetime
+				];
+			}
+			
 		}
 
 		if(empty($kuesioner)) {
@@ -208,19 +211,22 @@ class JsonConsultation extends CI_Controller {
 
 	public function getKuesionerAkhir()
 	{
-		$email = $this->input->post('email');
+		// $email = $this->input->post('email');
 		$email_psikolog = $this->input->post('email_psikolog');
 		$note = 'akhir';
-		$kuesioner = $this->m_kuesioner->get_by_email($email, $email_psikolog, $note);
+		$kuesioner = $this->m_kuesioner->get_by_email($email_psikolog, $note);
 		$data['data'] = null; 
 		if(!empty($kuesioner)) {
-			$res[] = [
-				'id'			=> $kuesioner->id,
-				'email_user' 		=> $kuesioner->email_user,
-				'email_psikolog'=> $kuesioner->email_psikolog,
-				'report' 		=> $kuesioner->report,
-				'datetime' 		=> $kuesioner->datetime
-			];
+			foreach($kuesioner as $kue) {
+				$res[] = [
+					'id'			=> $kue->id,
+					'email_user' 		=> $kue->email_user,
+					'email_psikolog'=> $kue->email_psikolog,
+					'report' 		=> $kue->report,
+					'datetime' 		=> $kue->datetime
+				];
+			}
+			
 		}
 
 		if(empty($kuesioner)) {
