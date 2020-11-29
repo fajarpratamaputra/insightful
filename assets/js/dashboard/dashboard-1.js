@@ -170,102 +170,102 @@
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
 	}
-	var ticketSoldChart = function(){
-			//#ticketSold
-		if(jQuery('#ticketSold').length > 0 ){
-		const ticketSold = document.getElementById("ticketSold").getContext('2d');
+	// var ticketSoldChart = function(){
+	// 		//#ticketSold
+	// 	if(jQuery('#ticketSold').length > 0 ){
+	// 	const ticketSold = document.getElementById("ticketSold").getContext('2d');
 		
-		// ticketSold.height = 100;
+	// 	// ticketSold.height = 100;
 
-		let barChartData = {
-			defaultFontFamily: 'Poppins',
-			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-			datasets: [{
-				label: 'Expense',
-				backgroundColor: '#2130b8',
-				hoverBackgroundColor: '#142193', 
-				data: [
-					'50',
-					'14',
-					'18',
-					'25',
-					'27',
-					'22',
-					'12', 
-					'24', 
-					'20', 
-					'14', 
-					'18', 
-					'16'
-				]
-			}, {
-				label: 'Earning',
-				backgroundColor: '#f0f0f0',
-				hoverBackgroundColor: '#e6e6e6', 
-				data: [
-					'12',
-					'18',
-					'14',
-					'7',
-					'5',
-					'10',
-					'20', 
-					'8', 
-					'12', 
-					'18', 
-					'14', 
-					'16'
-				]
-			}]
+	// 	let barChartData = {
+	// 		defaultFontFamily: 'Poppins',
+	// 		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+	// 		datasets: [{
+	// 			label: 'Expense',
+	// 			backgroundColor: '#2130b8',
+	// 			hoverBackgroundColor: '#142193', 
+	// 			data: [
+	// 				'10',
+	// 				'14',
+	// 				'18',
+	// 				'25',
+	// 				'27',
+	// 				'22',
+	// 				'12', 
+	// 				'24', 
+	// 				'20', 
+	// 				'14', 
+	// 				'18', 
+	// 				'16'
+	// 			]
+	// 		}, {
+	// 			label: 'Earning',
+	// 			backgroundColor: '#f0f0f0',
+	// 			hoverBackgroundColor: '#e6e6e6', 
+	// 			data: [
+	// 				'12',
+	// 				'18',
+	// 				'14',
+	// 				'7',
+	// 				'5',
+	// 				'10',
+	// 				'20', 
+	// 				'8', 
+	// 				'12', 
+	// 				'18', 
+	// 				'14', 
+	// 				'16'
+	// 			]
+	// 		}]
 
-		};
+	// 	};
 
-		new Chart(ticketSold, {
-			type: 'bar',
-			data: barChartData,
-			options: {
-				legend: {
-					display: false
-				}, 
-				title: {
-					display: false
-				},
-				tooltips: {
-					mode: 'index',
-					intersect: false
-				},
-				responsive: true,
-				maintainAspectRatio: false, 
-				scales: {
-					xAxes: [{
-						display: true, 
-						stacked: true,
-						barPercentage: 0.25, 
-						barThickness:15,
-						ticks: {
-							display: true
-						}, 
-						gridLines: {
-							display: false, 
-							drawBorder: false
-						}
-					}],
-					yAxes: [{
-						display: true, 
-						stacked: true, 
-						gridLines: {
-							display: false, 
-							drawBorder: false
-						}, 
-						ticks: {
-							display: false
-						}
-					}]
-				}
-			}
-		});
-		}
-	}
+	// 	new Chart(ticketSold, {
+	// 		type: 'bar',
+	// 		data: barChartData,
+	// 		options: {
+	// 			legend: {
+	// 				display: false
+	// 			}, 
+	// 			title: {
+	// 				display: false
+	// 			},
+	// 			tooltips: {
+	// 				mode: 'index',
+	// 				intersect: false
+	// 			},
+	// 			responsive: true,
+	// 			maintainAspectRatio: false, 
+	// 			scales: {
+	// 				xAxes: [{
+	// 					display: true, 
+	// 					stacked: true,
+	// 					barPercentage: 0.25, 
+	// 					barThickness:15,
+	// 					ticks: {
+	// 						display: true
+	// 					}, 
+	// 					gridLines: {
+	// 						display: false, 
+	// 						drawBorder: false
+	// 					}
+	// 				}],
+	// 				yAxes: [{
+	// 					display: true, 
+	// 					stacked: true, 
+	// 					gridLines: {
+	// 						display: false, 
+	// 						drawBorder: false
+	// 					}, 
+	// 					ticks: {
+	// 						display: false
+	// 					}
+	// 				}]
+	// 			}
+	// 		}
+	// 	});
+	// 	}
+	// }
 	var peityPrimary = function(){
 		$(".peity-primary").peity("line", {
 			fill: ["rgba(33, 48, 184, .2)"], 
@@ -295,7 +295,7 @@
 			load:function(){
 				activityBar();
 				donutChart();
-				ticketSoldChart();
+				// ticketSoldChart();
 				peityPrimary();
 				scheduleEvent();
 			},

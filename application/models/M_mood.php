@@ -13,9 +13,28 @@ class M_mood extends CI_model{
         return $query->result();
     }
 
-    public function get_by_email($email) {
-        $query = $this->db->where('employee_email', $email)
+    public function get_by_email($email, $date) {
+        if(!empty($date)) {
+            $query = $this->db->where('employee_email', $email)
+                ->where('date', $date)
                 ->get($this->table);
+        } else {
+            $query = $this->db->where('employee_email', $email)
+                ->get($this->table);
+        }
+        return $query->result();
+    }
+
+    public function get_by_email_date($email, $date) {
+        if(!empty($date)) {
+            $query = $this->db->where('employee_email', $email)
+                ->where('date', $date)
+                ->get($this->table);
+        } else {
+            $query = $this->db->where('employee_email', $email)
+                ->get($this->table);
+        }
+        
         return $query->result();
     }
 

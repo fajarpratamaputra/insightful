@@ -37,7 +37,43 @@ class JsonMood extends CI_Controller {
 	public function getMoodbyEmail()
 	{
 		$email = $this->input->post('email');
-		$mood = $this->m_mood->get_by_email($email);
+		$date = $this->input->post('date');
+		$mood = $this->m_mood->get_by_email($email, $date);
+		$data['data'] = null; 
+		foreach($mood as $mo) {
+			$res[] = [
+				'id'	=> $mo->id,
+				'email' => $mo->employee_email,
+				'mood' => $mo->mood,
+				'reason' => $mo->reason,
+				'date' => $mo->date
+			];
+		}
+
+		if(empty($mood)) {
+			$this->output
+			->set_status_header(200)
+			->set_content_type('application/json', 'utf-8')
+			->set_output(json_encode($data, JSON_PRETTY_PRINT))
+			->_display();
+			exit;
+		}
+
+		$data['data'] = $res; 
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($data, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
+	public function getMoodbyEmailDate()
+	{
+		$email = $this->input->post('email');
+		$date = $this->input->post('date');
+		$mood = $this->m_mood->get_by_email_date($email, $date);
 		$data['data'] = null; 
 		foreach($mood as $mo) {
 			$res[] = [
