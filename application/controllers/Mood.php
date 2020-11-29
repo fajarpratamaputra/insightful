@@ -16,8 +16,10 @@ class Mood extends CI_Controller {
 
 	public function index()
 	{	
-		$data['graph'] = $this->db->query('select * from datapenduduk')->result();
+		// $data['graph'] = $this->db->query('select * from datapenduduk limit 10')->result();
+		$data['graph'] = $this->db->query('select date, (select (select COUNT(mood)) as a from `mood_record` where mood = 1 group by mood) as m from `mood_record` group by date order by date desc limit 7')->result();
 		$data['mood'] = $this->m_mood->get_all();
+		$data['count'] = $this->db->query('select count(*) from mood_record')->row();
 		$this->template->view('mood/index',$data);
 	}
 

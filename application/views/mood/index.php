@@ -3,16 +3,13 @@
             <!-- row -->
 			<div class="container-fluid">
 				<div class="row">   
-                <div class="col-xl-12">
+                	<div class="col-xl-12">
 						<div class="card">
 							<div class="card-body">
+								<p class="font-w100 fs-20 text-black">Mood Grafik</p>
 								<div class="row mx-0">
-									<div class="col-sm-12 col-lg-4 px-0">
-										<h2 class="fs-40 text-black font-w600">2,441</h2>
-										<p class="font-w100 fs-20 text-black">Mood Grafik</p>							
-									</div>
-									<div class="col-sm-12 col-lg-8 px-0">
-										<canvas id="ticketSold" height="200"></canvas>
+									<div class="col-sm-12 col-lg-12 px-0">
+										<canvas id="ticketSold" height="150"></canvas>
 									</div>
 								</div>
 							</div>
@@ -81,20 +78,64 @@
           <?php
             if (count($graph)>0) {
               foreach ($graph as $data) {
-                echo "'" .$data->provinsi ."',";
+                echo "'" .$data->date ."',";
               }
             }
           ?>
         ],
         datasets: [{
-            label: 'Jumlah Penduduk',
+            label: 'Tertekan',
+            backgroundColor: '#FF6347',
+            borderColor: '##93C3D2',
+            data: [
+              <?php
+                if (count($graph)>0) {
+                   foreach ($graph as $data) {
+					$mood_count = $this->db->query("select COUNT(mood) as a from `mood_record` where mood = 1 and date = '$data->date' group by mood ;")->row();
+					if(!empty($mood_count->a)) {
+						echo $mood_count->a . ", ";
+					} else {
+						echo 0 , ", ";
+					}
+					
+                  }
+                }
+              ?>
+            ]
+        },{
+            label: 'Nyaman',
             backgroundColor: '#ADD8E6',
             borderColor: '##93C3D2',
             data: [
               <?php
                 if (count($graph)>0) {
                    foreach ($graph as $data) {
-                    echo $data->jumlah . ", ";
+					$mood_count = $this->db->query("select COUNT(mood) as a from `mood_record` where mood = 2 and date = '$data->date' group by mood ;")->row();
+					if(!empty($mood_count->a)) {
+						echo $mood_count->a . ", ";
+					} else {
+						echo 0 , ", ";
+					}
+					
+                  }
+                }
+              ?>
+            ]
+        },{
+            label: 'Semangat',
+            backgroundColor: '#FF8C00',
+            borderColor: '##93C3D2',
+            data: [
+              <?php
+                if (count($graph)>0) {
+                   foreach ($graph as $data) {
+					$mood_count = $this->db->query("select COUNT(mood) as a from `mood_record` where mood = 3 and date = '$data->date' group by mood ;")->row();
+					if(!empty($mood_count->a)) {
+						echo $mood_count->a . ", ";
+					} else {
+						echo 0 , ", ";
+					}
+					
                   }
                 }
               ?>
