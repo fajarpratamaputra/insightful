@@ -9,6 +9,7 @@ class JsonTopic extends CI_Controller {
 		//load model
 		$this->load->library('template');
 		$this->load->model('m_chatgroup');
+		date_default_timezone_set("Asia/Makassar");
 	}
 
 	public function getTopic()

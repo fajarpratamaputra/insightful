@@ -10,6 +10,7 @@ class ChatGroup extends CI_Controller {
 		$this->load->model('m_chatgroup');
 		$this->load->model('m_psikolog');
 		$this->load->library('template');
+		date_default_timezone_set("Asia/Makassar");
 	}
 
 	public function index()

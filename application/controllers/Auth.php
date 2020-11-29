@@ -8,6 +8,7 @@ class Auth extends CI_Controller {
 		parent ::__construct();
 		$this->load->library('bcrypt');
 		$this->load->model('m_auth');
+		date_default_timezone_set("Asia/Makassar");
 		//load model
 	}
 

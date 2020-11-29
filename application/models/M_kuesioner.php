@@ -13,6 +13,16 @@ class M_kuesioner extends CI_model{
         return $query->result();
     }
 
+    public function get_by_email($email, $email_psikolog, $note) {
+        $query = $this->db->where('email_user', $email)
+                    ->where('email_psikolog', $email_psikolog)
+                    ->where('note', $note)
+                    ->order_by('id', 'DESC')
+                    ->limit(1)
+                    ->get($this->table);
+        return $query->row();
+    }
+
     public function add_consultation($data) {
         $insert = $this->db->insert($this->table, $data);
         if ($insert) :

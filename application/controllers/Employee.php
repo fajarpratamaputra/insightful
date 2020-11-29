@@ -8,6 +8,7 @@ class Employee extends CI_Controller {
 		parent ::__construct();
 		//load model
 		$this->load->library('template');
+		date_default_timezone_set("Asia/Makassar");
 	}
 
 	public function index()

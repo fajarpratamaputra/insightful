@@ -10,6 +10,7 @@ class Hr extends CI_Controller {
 		$this->load->model('m_office');
 		$this->load->library('template');
 		$this->load->library('bcrypt');
+		date_default_timezone_set("Asia/Makassar");
 	}
 
 	public function index()

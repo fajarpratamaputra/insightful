@@ -9,6 +9,7 @@ class JsonMood extends CI_Controller {
 		//load model
 		$this->load->library('template');
 		$this->load->model('m_mood');
+		date_default_timezone_set("Asia/Makassar");
 	}
 
 	public function getMood()

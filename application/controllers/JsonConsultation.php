@@ -112,6 +112,7 @@ class JsonConsultation extends CI_Controller {
 			'email_psikolog' 	=> $email_psikolog,
 			'token_psikolog' 	=> $token_psikolog,
 			'report' 			=> $report,
+			'note'				=> 'awal',
 			'datetime'			=> date('Y-m-d H:i:s')
 		);
 
@@ -125,6 +126,113 @@ class JsonConsultation extends CI_Controller {
 			->_display();
 			exit;
 		}
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($data, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
+	public function getKuesioner()
+	{
+		$email = $this->input->post('email');
+		$email_psikolog = $this->input->post('email_psikolog');
+		$note = 'awal';
+		$kuesioner = $this->m_kuesioner->get_by_email($email, $email_psikolog, $note);
+		$data['data'] = null; 
+		if(!empty($kuesioner)) {
+			$res[] = [
+				'id'			=> $kuesioner->id,
+				'email_user' 		=> $kuesioner->email_user,
+				'email_psikolog'=> $kuesioner->email_psikolog,
+				'report' 		=> $kuesioner->report,
+				'datetime' 		=> $kuesioner->datetime
+			];
+		}
+
+		if(empty($kuesioner)) {
+			$this->output
+			->set_status_header(200)
+			->set_content_type('application/json', 'utf-8')
+			->set_output(json_encode($data, JSON_PRETTY_PRINT))
+			->_display();
+			exit;
+		}
+
+		$data['data'] = $res; 
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($data, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
+	public function insertKuesionerAkhir()
+	{
+		$email_user 	 = $this->input->post('email_user');
+		$email_psikolog  = $this->input->post('email_psikolog');
+		$token_psikolog  = $this->input->post('token_psikolog');
+		$report 		 = $this->input->post('report');
+
+		$data = array(
+			'email_user' 		=> $email_user,
+			'email_psikolog' 	=> $email_psikolog,
+			'token_psikolog' 	=> $token_psikolog,
+			'report' 			=> $report,
+			'note'				=> 'akhir',
+			'datetime'			=> date('Y-m-d H:i:s')
+		);
+
+		$res = $this->m_kuesioner->add_consultation($data);
+
+		if(empty($res)) {
+			$this->output
+			->set_status_header(500)
+			->set_content_type('application/json', 'utf-8')
+			->set_output(json_encode($res, JSON_PRETTY_PRINT))
+			->_display();
+			exit;
+		}
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($data, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
+	public function getKuesionerAkhir()
+	{
+		$email = $this->input->post('email');
+		$email_psikolog = $this->input->post('email_psikolog');
+		$note = 'akhir';
+		$kuesioner = $this->m_kuesioner->get_by_email($email, $email_psikolog, $note);
+		$data['data'] = null; 
+		if(!empty($kuesioner)) {
+			$res[] = [
+				'id'			=> $kuesioner->id,
+				'email_user' 		=> $kuesioner->email_user,
+				'email_psikolog'=> $kuesioner->email_psikolog,
+				'report' 		=> $kuesioner->report,
+				'datetime' 		=> $kuesioner->datetime
+			];
+		}
+
+		if(empty($kuesioner)) {
+			$this->output
+			->set_status_header(200)
+			->set_content_type('application/json', 'utf-8')
+			->set_output(json_encode($data, JSON_PRETTY_PRINT))
+			->_display();
+			exit;
+		}
+
+		$data['data'] = $res; 
 		
 		$this->output
 		->set_status_header(200)
