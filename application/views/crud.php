@@ -126,13 +126,13 @@
     var lastIndex = 0;
 
     // Get Data
-    firebase.database().ref('Users/').on('value', function (snapshot) {
+    firebase.database().ref('students/').on('value', function (snapshot) {
         var value = snapshot.val();
         var htmls = [];
         $.each(value, function (index, value) {
             if (value) {
                 htmls.push('<tr>\
-                <td>' + value.email + '</td>\
+                <td>' + value.nis + '</td>\
                 <td>' + value.name + '</td>\
                 <td>' + value.age + '</td>\
                 <td><button data-toggle="modal" data-target="#update-modal" class="btn btn-info updateStudent" data-id="' + index + '">Update</button>\
@@ -151,21 +151,12 @@
         var nis = values[0].value;
         var name = values[1].value;
         var age = values[2].value;
-        
+        var userID = lastIndex + 1;
 
-        //logic random
-        var result           = '';
-        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var charactersLength = characters.length;
-        for ( var i = 0; i < 28; i++ ) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-
-        var userID = result;
-        firebase.database().ref('Users/' + userID).set({
-            email: 'fajar',
-            login: 'false',
-            status: 1,
+        firebase.database().ref('students/' + userID).set({
+            nis: nis,
+            name: name,
+            age: age,
         });
 
         // Reassign lastID value

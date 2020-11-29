@@ -7,16 +7,16 @@
         <div class="card-body">
             <form id="addStudent" class="form-inline" method="POST" action="">
                 <div class="form-group mb-2">
-                    <label for="nis" class="sr-only">Nomor Induk Siswa</label>
-                    <input id="nis" type="text" class="form-control" name="nis" placeholder="Nomor Induk Siswa" required autofocus>
+                    <label for="username" class="sr-only">Username</label>
+                    <input id="username" type="text" class="form-control" name="username" placeholder="Username" required autofocus>
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
-                    <label for="name" class="sr-only">Nama Siswa</label>
-                    <input id="name" type="text" class="form-control" name="name" placeholder="Nama Siswa" required autofocus>
+                    <label for="email" class="sr-only">Email</label>
+                    <input id="email" type="text" class="form-control" name="email" placeholder="Email" required autofocus>
                 </div>
                 <div class="form-group mb-2">
-                    <label for="age" class="sr-only">Usia</label>
-                    <input id="age" type="text" class="form-control" name="age" placeholder="Usia" required autofocus>
+                    <label for="password" class="sr-only">Password</label>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Password" required autofocus>
                 </div>
                 <button id="submitStudent" type="button" class="btn btn-primary mx-sm-3 mb-2">Tambah</button>
             </form>
@@ -32,7 +32,7 @@
                 <tr>
                     <th>Username</th>
                     <th>Email</th>
-                    <th>Usia</th>
+                    <th>Status</th>
                     <th width="180" class="text-center">Action</th>
                 </tr>
                 <tbody id="tbody">
@@ -118,7 +118,7 @@
     var lastIndex = 0;
 
     // Get Data
-    firebase.database().ref('Users/').on('value', function (snapshot) {
+    firebase.database().ref('Users/').orderByChild("karyawan").equalTo("Psikolog").on('value', function (snapshot) {
         var value = snapshot.val();
         var htmls = [];
         $.each(value, function (index, value) {
@@ -126,9 +126,9 @@
                 htmls.push('<tr>\
                 <td>' + value.username + '</td>\
                 <td>' + value.email + '</td>\
-                <td>' + value.umur + '</td>\
-                <td><button data-toggle="modal" data-target="#update-modal" class="btn btn-info updateStudent" data-id="' + value.uid + '">Update</button>\
-                <button data-toggle="modal" data-target="#remove-modal" class="btn btn-danger removeStudent" data-id="' + value.uid + '">Delete</button></td>\
+                <td>' + value.karyawan + '</td>\
+                <td><button data-toggle="modal" data-target="#update-modal" class="btn btn-info updateStudent" data-id="' + value.id + '">Update</button>\
+                <button data-toggle="modal" data-target="#remove-modal" class="btn btn-danger removeStudent" data-id="' + value.id + '">Delete</button></td>\
             </tr>');
             }
             lastIndex = index;
@@ -140,9 +140,9 @@
     // Add Data
     $('#submitStudent').on('click', function () {
         var values = $("#addStudent").serializeArray();
-        var nis = values[0].value;
-        var name = values[1].value;
-        var age = values[2].value;
+        var username = values[0].value;
+        var email = values[1].value;
+        var password = values[2].value;
         
 
         //logic random
@@ -155,10 +155,13 @@
 
         var userID = result;
         firebase.database().ref('Users/' + userID).set({
-            email: 'fajar',
+            email: email,
             login: 'false',
             status: 1,
-            uid: userID,
+            id: userID,
+            karyawan: 'Psikolog',
+            username: username,
+            password: password,
         });
 
         // Reassign lastID value
@@ -175,23 +178,25 @@
         firebase.database().ref('Users/' + updateID).on('value', function (snapshot) {
             var values = snapshot.val();
             var updateData = '<div class="form-group">\
-                <label for="edit_nis" class="col-md-12 col-form-label">Nomor Induk Siswa</label>\
+                <label for="edit_nis" class="col-md-12 col-form-label">Username</label>\
                 <div class="col-md-12">\
-                    <input id="edit_nis" type="text" class="form-control" name="edit_nis" value="' + values.useername + '" placeholder="Nomor Induk Siswa" required autofocus>\
+                    <input id="edit_nis" type="text" class="form-control" name="edit_nis" value="' + values.username + '" placeholder="Username" required autofocus>\
                 </div>\
             </div>\
             <div class="form-group">\
-                <label for="edit_name" class="col-md-12 col-form-label">Nama Lengkap</label>\
+                <label for="edit_name" class="col-md-12 col-form-label">Email</label>\
                 <div class="col-md-12">\
-                    <input id="edit_name" type="text" class="form-control" name="edit_name" value="' + values.email + '" placeholder="Nama Siswa" required autofocus>\
+                    <input id="edit_name" type="text" class="form-control" name="edit_name" value="' + values.email + '" placeholder="Email" required autofocus>\
                 </div>\
             </div>\
             <div class="form-group">\
-                <label for="edit_age" class="col-md-12 col-form-label">Usia</label>\
+                <label for="edit_age" class="col-md-12 col-form-label">Phone</label>\
                 <div class="col-md-12">\
-                    <input id="edit_age" type="text" class="form-control" name="edit_age" value="' + values.umur + '" placeholder="Usia" required autofocus>\
+                    <input id="edit_age" type="number" class="form-control" name="edit_age" value="' + values.phone + '" placeholder="Phone" required autofocus>\
                 </div>\
-            </div>';
+            </div>\
+            <input id="edit_age" type="hidden" class="form-control" name="edit_age" value="' + values.id + '" required autofocus>\
+            <input id="edit_age" type="hidden" class="form-control" name="edit_age" value="' + values.password + '" required autofocus>';
 
             $('#updateBody').html(updateData);
         });
@@ -202,7 +207,10 @@
         var postData = {
             username: values[0].value,
             email: values[1].value,
-            umur: values[2].value,
+            phone: values[2].value,
+            id: values[3].value,
+            karyawan: 'Psikolog',
+            password: values[4].value,
         };
         var updates = {};
         updates['/Users/' + updateID] = postData;
