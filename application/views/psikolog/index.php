@@ -26,22 +26,28 @@
     <br>
 
     <h5># Data Psikolog</h5>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table id="example4" class="display" style="min-width: 845px">
-                <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                    <th width="180" class="text-center">Action</th>
-                </tr>
-                <tbody id="tbody">
-                
-                </tbody>
-            </table>
-        </div>
-    </div>
     
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example2" class="display" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th width="180" class="text-center">Action</th>
+                    </tr>
+                    </thead>
+                    
+                    <tbody id="tbody">
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>    
+    </div>
+
 </div>
 
 <!-- Update Model -->
