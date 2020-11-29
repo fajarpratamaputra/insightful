@@ -15,9 +15,11 @@ class JsonLog extends CI_Controller {
 	{
 		$email = $this->input->post('email');
 		$username  = $this->input->post('username');
+		$karyawan  = $this->input->post('karyawan');
 		$data = array(
 			'email' 	=> $email,
 			'username' 	=> $username,
+			'status' 	=> $karyawan,
 			'datetime' 	=> date('Y-m-d'),
 		);
 		$log_login = $this->m_auth->get_log_by_email($email, $username);
