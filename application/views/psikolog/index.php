@@ -30,14 +30,14 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="example2" class="display" style="width:100%">
+                <table class="table table-hover table-responsive-sm">
                     <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                        <th width="180" class="text-center">Action</th>
-                    </tr>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th width="280" class="text-center">Action</th>
+                        </tr>
                     </thead>
                     
                     <tbody id="tbody">

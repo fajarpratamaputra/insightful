@@ -23,6 +23,21 @@ class M_auth extends CI_model{
     endif;
   }
 
+  public function get_log() {
+    $where = array('Karyawan','Non-Karyawan');
+    $query = $this->db->where_in('status', $where)
+                ->order_by('id', 'DESC')
+                ->get('log_login');
+    return $query->result();
+  }
+
+  public function get_log_psikolog() {
+    $query = $this->db->where('status', 'Psikolog')
+                ->order_by('id', 'DESC')
+                ->get('log_login');
+    return $query->result();
+  }
+
   public function get_log_by_email($email, $username) {
     $query = $this->db->where('email', $email)
                 ->where('username', $username)

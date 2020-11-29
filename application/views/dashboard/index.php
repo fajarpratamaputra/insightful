@@ -17,129 +17,54 @@
 
 					</div>              
 					<div class="col-xl-6 col-xxxl-12 col-lg-6">
-						<div class="card widget-media">
-							<div class="card-header border-0 pb-0 ">
-								<h4 class="text-black">Login terbaru (Karyawan)</h4>
-								<div class="dropdown ml-auto text-right">
-									<div class="btn-link" data-toggle="dropdown">
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="12" cy="5" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="19" r="2"></circle></g></svg>
-									</div>
-									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" href="javascript:void(0);">View Detail</a>
-										<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-										<a class="dropdown-item" href="javascript:void(0);">Delete</a>
-									</div>
-								</div>
-							</div>
-							<div class="card-body timeline pb-2">
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/1.jpg">
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Mail</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Telkom</p>
-									</div>
-									<p class="mb-0 fs-14">2m ago</p>
-								</div>
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/2.jpg">
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Mail</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Telkom</p>
-									</div>
-									<p class="mb-0 fs-14">5m ago</p>
-								</div>
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/3.jpg">
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Mail</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Telkom</p>
-									</div>
-									<p class="mb-0  fs-14">8m ago</p>
-								</div>
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/4.jpg">
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Mail</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Telkom</p>
-									</div>
-									<p class="mb-0 fs-14">12m ago</p>
-								</div>
-							</div>
-							<div class="card-footer border-0 pt-0 text-center">
-								<a href="javascript:void(0);" class="btn-link">View more <i class="fa fa-angle-down ml-2 scale-2"></i></a>
-							</div>
-						</div>
+						<div class="card">
+                            <div class="card-header border-0 pb-0">
+                                <h4 class="card-title">Timeline</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="DZ_W_TimeLine" class="widget-timeline dz-scroll" style="height:370px;">
+                                    <ul class="timeline">
+									<?php 
+										foreach ($last_karyawan as $karyawan) {										
+									?>
+                                        <li>
+                                            <div class="timeline-badge primary"></div>
+                                            <a class="timeline-panel text-muted" href="#">
+                                                <span><?=date('D M Y', strtotime($karyawan->datetime))?></span>
+                                                <h6 class="mb-0"><?=$karyawan->username?> telah login.</h6>
+                                            </a>
+                                        </li>
+									<?php } ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-xl-6 col-xxxl-12 col-lg-6">
-						<div class="card widget-media">
-							<div class="card-header border-0 pb-0 ">
-								<h4 class="text-black">Login terbaru (Psikolog)</h4>
-								<div class="dropdown ml-auto text-right">
-									<div class="btn-link" data-toggle="dropdown">
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="12" cy="5" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="19" r="2"></circle></g></svg>
-									</div>
-									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" href="javascript:void(0);">View Detail</a>
-										<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-										<a class="dropdown-item" href="javascript:void(0);">Delete</a>
-									</div>
-								</div>
-							</div>
-							<div class="card-body timeline pb-2">
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/1.jpg">
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Vriska</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Psikolog</p>
-									</div>
-									<p class="mb-0 fs-14">2m ago</p>
-								</div>
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/2.jpg">
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Vriska</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Psikolog</p>
-									</div>
-									<p class="mb-0 fs-14">5m ago</p>
-								</div>
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/3.jpg">
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Vriska</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Psikolog</p>
-									</div>
-									<p class="mb-0  fs-14">8m ago</p>
-								</div>
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<img class="rounded-circle" alt="image" width="50" src="images/avatar/4.jpg">
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><a class="text-black" href="javascript:void(0);">Vriska</a></h5>
-										<p class="d-block mb-0 text-primary"><i class="las la-ticket-alt mr-2 scale5 ml-1"></i>Psikolog</p>
-									</div>
-									<p class="mb-0 fs-14">12m ago</p>
-								</div>
-							</div>
-							<div class="card-footer border-0 pt-0 text-center">
-								<a href="javascript:void(0);" class="btn-link">View more <i class="fa fa-angle-down ml-2 scale-2"></i></a>
-							</div>
-						</div>
-					</div>
+					<div class="col-xl-6 col-xxxl-12 col-lg-6">
+					<div class="card">
+                            <div class="card-header border-0 pb-0">
+                                <h4 class="card-title">Timeline 2</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="DZ_W_TimeLine1" class="widget-timeline dz-scroll style-1" style="height:370px;">
+                                    <ul class="timeline">
+									<?php 
+										foreach ($last_psikolog as $psikolog) {										
+									?>
+                                        <li>
+                                            <div class="timeline-badge primary"></div>
+                                            <a class="timeline-panel text-muted" href="#">
+                                                <span><?=date('D M Y', strtotime($psikolog->datetime))?></span>
+                                                <h6 class="mb-0"><?=$psikolog->username?> telah login.</h6>
+                                            </a>
+                                        </li>
+									<?php } ?>   
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
 				</div>
             </div>
         </div>
