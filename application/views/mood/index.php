@@ -19,49 +19,49 @@
 						<div class="card widget-media">
 							<div class="card-header border-0 pb-0 ">
 								<h4 class="text-black">Mood Table</h4>
-								<div class="dropdown ml-auto text-right">
-									<div class="btn-link" data-toggle="dropdown">
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="12" cy="5" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="19" r="2"></circle></g></svg>
-									</div>
-									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" href="javascript:void(0);">View Detail</a>
-										<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-										<a class="dropdown-item" href="javascript:void(0);">Delete</a>
-									</div>
-								</div>
 							</div>
-							<div class="card-body timeline pb-2">
-							<?php
-                                $no = 1;
-                                foreach($mood as $m){
-                        	?>
-								<div class="timeline-panel align-items-end">
-									<div class="media mr-3">
-										<h5><?=$no++?></h5>
+							<div class="card-body">
+										<div class="table-responsive">
+											<table id="example4" class="display" style="min-width: 845px">
+												<thead>
+													<tr>
+														<th>No</th>
+														<th>Email</th>
+														<th>Mood</th>
+														<th>Date </th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+														$no = 0;
+														foreach($mood as $m){
+													?>
+													<tr>
+
+														<td><?=++$no?></td>
+														<td><?=$m->employee_email?></td>
+														<td>
+															<?php 
+																if($m->mood == 1) {
+																	echo "Sedih";
+																} elseif($m->mood == 2) {
+																	echo "Biasa";
+																} elseif($m->mood == 3) {
+																	echo "Senang";
+																}
+															?>
+														</td>
+														<td><?=$m->date?></td>
+														
+													</tr>
+													<?php } ?>
+												</tbody>
+											</table>
+										</div>
 									</div>
-									<div class="media-body">
-										<h5 class="mb-1"><?=$m->employee_email?></h5>
-									</div>
-									<div class="media-body">
-										<h5 class="mb-1">
-											<?php 
-												if($m->mood == 1) {
-													echo "Sedih";
-												} elseif($m->mood == 2) {
-													echo "Biasa";
-												} elseif($m->mood == 3) {
-													echo "Senang";
-												}
-											?>
-										</h5>
-									</div>
-									<p class="mb-0 fs-14"><?=$m->date?></p>
-								</div>
-							<?php }?>
-							</div>
-							<div class="card-footer border-0 pt-0 text-center">
-								<a href="javascript:void(0);" class="btn-link">View more <i class="fa fa-angle-down ml-2 scale-2"></i></a>
-							</div>
+
+							
+							
 						</div>
                     </div>
                     
