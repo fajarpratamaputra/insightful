@@ -22,7 +22,7 @@
 											<tr>
 												<th style="width:250px;">Category</th>
                                                 <th class="d-none d-lg-table-cell">Date & Time</th>
-                                                <th class="d-none d-lg-table-cell">Psychologist</th>
+                                                <th class="d-none d-lg-table-cell">Email Psikolog</th>
 												<th class="d-none d-lg-table-cell">Status</th>
 												<th>Action</th>
 											</tr>
@@ -46,7 +46,7 @@
 												<td>
 													<div class="media align-items-center">
 														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no"><?=$chat->fullname?></h4>
+															<h4 class="text-black font-w600 mb-1 wspace-no"><?=$chat->psycologist_id?></h4>
 														</div>
 													</div>
 												</td>

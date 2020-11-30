@@ -13,12 +13,23 @@ class M_kuesioner extends CI_model{
         return $query->result();
     }
 
-    public function get_by_email($email_psikolog, $note) {
-        $query = $this->db->where('email_psikolog', $email_psikolog)
+    public function get_by_email($email, $email_psikolog, $note) {
+        if(!empty($email)){
+            $query = $this->db->where('email_user', $email)
+                    ->where('email_psikolog', $email_psikolog)
                     ->where('note', $note)
                     ->order_by('id', 'DESC')
-                    ->get($this->table);
-        return $query->result();
+                    ->get($this->table)
+                    ->row();
+        }else {
+            $query = $this->db->where('email_psikolog', $email_psikolog)
+                    ->where('note', $note)
+                    ->order_by('id', 'DESC')
+                    ->get($this->table)
+                    ->result();
+        }
+        
+        return $query;
     }
 
     public function add_consultation($data) {

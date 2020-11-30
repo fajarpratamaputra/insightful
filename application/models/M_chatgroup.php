@@ -9,9 +9,8 @@ class M_chatgroup extends CI_model{
     }
 
     public function get_all() {
-        $query = $this->db->select('ccg.*, p.fullname')
+        $query = $this->db->select('ccg.*')
                 ->from('category_chat_group as ccg')
-                ->join('psycologist as p', 'p.id = ccg.psycologist_id')
                 ->get();
         return $query->result();
     }

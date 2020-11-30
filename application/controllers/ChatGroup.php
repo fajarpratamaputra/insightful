@@ -22,7 +22,7 @@ class ChatGroup extends CI_Controller {
 	public function addChatGroup()
 	{
 		$data['psyco'] = $this->m_psikolog->get_all();
-		$this->template->view('chatGroup/addChatGroup',$data);
+		$this->template->view('chatGroup/psikolog',$data);
 	}
 
 	public function insert()
@@ -30,7 +30,8 @@ class ChatGroup extends CI_Controller {
 		$title 	  		= $this->input->post("title");
 		$date 	  		= $this->input->post("date");
 		$time 	  		= $this->input->post("time");
-		$psycologist_id = $this->input->post("psycolog");
+		$psycologist_id = $this->input->post("id");
+		$token 			= $this->input->post("token");
 		$data = array(
 			'title' 		=> $title,
 			'status' 		=> 0,
