@@ -13,7 +13,9 @@
                     <!-- Column starts -->
                     <?php 
                         foreach($consultation as $consul) { 
-                            $report = str_replace('[', '', $consul->report);
+                            $report_kurungawal = str_replace('{', '', $consul->report);
+                            $report_kurungakhir = str_replace('}', '', $report_kurungawal);
+                            $report = str_replace('[', '', $report_kurungakhir);
                             $report_akhir = str_replace(']', '', $report);
                             $hasil_report = explode(',', $report_akhir);
                     ?>
@@ -30,15 +32,16 @@
                                             <span class="accordion__header--text">Hasil Konsultasi</span>
                                             <span class="accordion__header--indicator"></span>
                                         </div>
-                                        <?php 
-                                            foreach($hasil_report as $hr) {                                            
-                                        ?>
                                         <div id="default_collapseOne" class="collapse accordion__body show" data-parent="#accordion-one">
                                             <div class="accordion__body--text">
-                                                <?=$hr?>
+                                                <?php 
+                                                    foreach($hasil_report as $hr) {                                            
+                                                ?>
+                                                <?=$hr.'</br>';?>
+                                                <?php } ?>
                                             </div>
                                         </div>
-                                        <?php } ?>
+                                        
                                     </div>                                    
                                 </div>
                             </div>
