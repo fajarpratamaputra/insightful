@@ -117,14 +117,8 @@
                     <input id="time" type="time" class="form-control" name="time" placeholder="Time" required autofocus>\
                 </div>\
             </div>\
-            <div class="form-group">\
-                <label for="token" class="col-md-12 col-form-label">Time</label>\
-                <div class="col-md-12">\
-                    <input id="token" type="text" class="form-control" name="token" value="' + values.token + '" placeholder="Token" required autofocus>\
-                </div>\
-            </div>\
-            <input id="id" type="text" class="form-control" name="id" value="' + values.id + '" required autofocus>\
-            <input id="token" type="text" class="form-control" name="token" value="' + values.token + '" required autofocus>';
+            <input id="id" type="hidden" class="form-control" name="id" value="' + values.email + '" required autofocus>\
+            <input id="token" type="hidden" class="form-control" name="token" value="' + values.token + '" required autofocus>';
             
             $('#updateBody').html(updateData);
         });

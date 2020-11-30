@@ -70,7 +70,7 @@ class JsonConsultation extends CI_Controller {
 			"registration_ids":['.$token.'],
 			"notification": {
 				"title":"insightful",
-				"body":"anda menerima pesan dari hrd"
+				"body":"Anda menerima permintaan konsultasi"
 			}
 		  }',
 		CURLOPT_HTTPHEADER => array(
