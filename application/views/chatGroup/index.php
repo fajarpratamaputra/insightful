@@ -8,7 +8,7 @@
 							<div class="card-header">
                                 <h4 class="card-title">List Category Chat Group</h4>
                                 <div class="col-lg-3 mb-4 mb-lg-0">
-                                    <a href="<?=base_url()?>chatgroup/addChatGroup" class="btn btn-primary light btn-lg btn-block rounded shadow px-2">+New Category</a>
+                                    <a href="<?=base_url()?>chatGroup/addChatGroup" class="btn btn-primary light btn-lg btn-block rounded shadow px-2">+New Category</a>
                                 </div>
                             </div>
 						</div>
