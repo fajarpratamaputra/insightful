@@ -13,6 +13,12 @@ class M_consultation extends CI_model{
         return $query->result();
     }
 
+    public function get_by_email($email) {
+        $query = $this->db->where('email_user', $email)
+                ->get($this->table);
+        return $query->result();
+    }
+
     public function add_consultation($data) {
         $insert = $this->db->insert($this->table, $data);
         if ($insert) :

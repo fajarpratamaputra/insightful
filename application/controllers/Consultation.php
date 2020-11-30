@@ -21,4 +21,11 @@ class Consultation extends CI_Controller {
 		$this->template->view('consultation/index', $data);
 	}
 
+	public function detailConsultation()
+	{
+		$email = $this->input->get('email');
+		$data['consultation'] = $this->m_consultation->get_by_email($email);
+		$this->template->view('consultation/detail', $data);
+	}
+
 }

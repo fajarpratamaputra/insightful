@@ -56,6 +56,14 @@
 													</tr>
 													<?php } ?>
 												</tbody>
+												<tfoot>
+													<tr>
+														<th>No</th>
+														<th>Email</th>
+														<th>Mood</th>
+														<th>Date</th>
+													</tr>
+												</tfoot>
 											</table>
 										</div>
 									</div>
