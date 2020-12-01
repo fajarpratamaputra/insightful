@@ -30,6 +30,12 @@ class M_chatgroup extends CI_model{
         return $query->row();
     }
 
+    public function get_topic($id) {
+        $query = $this->db->where('id', $id)
+                ->get($this->table);
+        return $query->row();
+    }
+
     public function get_chat($id) {
         $query = $this->db->where('id_topic', $id)
                 ->get($this->table_chat);

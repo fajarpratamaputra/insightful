@@ -36,7 +36,7 @@
 												<td>
 													<div class="media align-items-center">
 														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no"><?=$chat->title?></h4>
+															<h6 class="text-black font-w600 mb-1 wspace-no"><?php echo word_limiter($chat->title, 6) ?></h6>
 														</div>
 													</div>
 												</td>
@@ -46,7 +46,7 @@
 												<td>
 													<div class="media align-items-center">
 														<div class="media-body">
-															<h4 class="text-black font-w600 mb-1 wspace-no"><?=$chat->psycologist_id?></h4>
+															<h6 class="text-black font-w600 mb-1 wspace-no"><?=$chat->psycologist_id?></h6>
 														</div>
 													</div>
 												</td>

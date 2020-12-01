@@ -10,6 +10,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
+                            <div class="card-header d-block">
+                                <h4 class="card-title"><?=$topic->title?></h4>
+                                <p class="mb-0 subtitle"><?=$topic->username?></p>
+                            </div>
+                        </div>
+					</div>
+                    <div class="col-lg-12">
+                        <div class="card">
                             <div class="card-body">
                                 <div id="DZ_W_TimeLine" class="widget-timeline dz-scroll" style="height:600px">
                                     <?php
