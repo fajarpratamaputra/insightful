@@ -65,17 +65,19 @@ class JsonTopic extends CI_Controller {
 	public function getTopicforPsikolog()
 	{
 		$email_psikolog = $this->input->post('email_psikolog');
-		
-		$data = $this->m_chatgroup->get_for_psikolog($email_psikolog);
+		$status = $this->input->post('status');
+		$data = $this->m_chatgroup->get_for_psikolog($email_psikolog, $status);
 
-		$response = array(
-			'data' => $data,
-		);
+		// $response = array(
+		// 	'data' => $data,
+		// );
+
+		$res['data'] = $data;
 		
 		$this->output
 		->set_status_header(200)
 		->set_content_type('application/json', 'utf-8')
-		->set_output(json_encode($response, JSON_PRETTY_PRINT))
+		->set_output(json_encode($res, JSON_PRETTY_PRINT))
 		->_display();
 		exit;
 	}

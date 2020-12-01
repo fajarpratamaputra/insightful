@@ -24,10 +24,11 @@ class M_chatgroup extends CI_model{
         return $query->row();
     }
 
-    public function get_for_psikolog($email) {
+    public function get_for_psikolog($email, $status) {
         $query = $this->db->where('psycologist_id', $email)
+                ->where('status', $status)
                 ->get($this->table);
-        return $query->row();
+        return $query->result();
     }
 
     public function get_topic($id) {
