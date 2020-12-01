@@ -14,7 +14,7 @@ class JsonDownload extends CI_Controller {
 
 	public function getApp()
 	{
-		$data = $this->db->query("UPDATE analytic SET value=value+1 WHERE id = '1'");
+		$data = $this->db->query("UPDATE analytic SET value=value+1 WHERE name = 'klik'");
 		
 		redirect("https://drive.google.com/file/d/1_iStZ085zEB_LPgav3bgHc3ZITX2fdJr/view?usp=sharing");
 	}
