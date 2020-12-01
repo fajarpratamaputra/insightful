@@ -31,6 +31,7 @@ class ChatGroup extends CI_Controller {
 		$date 	  		= $this->input->post("date");
 		$time 	  		= $this->input->post("time");
 		$psycologist_id = $this->input->post("id");
+		$username 		= $this->input->post("username");
 		$token 			= $this->input->post("token");
 		$data = array(
 			'title' 		=> $title,
@@ -38,6 +39,7 @@ class ChatGroup extends CI_Controller {
 			'date' 			=> date('Y-m-d', strtotime($date)),
 			'time' 			=> date('H:i:s', strtotime($time)),
 			'psycologist_id'=> $psycologist_id,
+			'username'		=> $username,
 			'token'			=> $token
 		);
 

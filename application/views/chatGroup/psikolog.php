@@ -118,6 +118,7 @@
                 </div>\
             </div>\
             <input id="id" type="hidden" class="form-control" name="id" value="' + values.email + '" required autofocus>\
+            <input id="username" type="hidden" class="form-control" name="username" value="' + values.username + '" required autofocus>\
             <input id="token" type="hidden" class="form-control" name="token" value="' + values.token + '" required autofocus>';
             
             $('#updateBody').html(updateData);
