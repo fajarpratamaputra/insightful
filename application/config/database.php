@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'u445073489_insightful_adm',
-	'password' => '!@#123QWEqwe',
-	'database' => 'u445073489_insightful',
+	'hostname' => '127.0.0.1',
+	'username' => 'root',
+	'password' => '25februari1995',
+	'database' => 'insightful',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -11,56 +11,51 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                            <div class="col-12">
-                                        <div class="read-content">
-                                                    <div class="media pt-3">
-														<div class="media-body mr-2">
-															<h5 class="text-primary mb-0 mt-1">Mental Illness</h5>
-															<p class="mb-0">20 May 2018</p>
-														</div>
-													</div>
-                                                    <hr>
-                                                    <div class="read-content-body">
-                                                        <div style="float:left; text-align:left">
-                                                            <div class="media-body mr-2">
-                                                                <h5 class="text-primary mb-0 mt-1">Ingredia Nutrisha</h5>
-                                                                <p>Selamat siang, saya akan membicarakan tentang hal hal yang bisa menyebabkan mental illness</p>
-                                                            </div>
-                                                        </div>
-                                                        <div style="float:right; text-align:right">
-                                                            <div class="media-body mr-2">
-                                                                <h5 class="text-primary mb-0 mt-1">Mail</h5>
-                                                                <p>topiknya menarik</p>
-                                                            </div>
-                                                        </div>
-                                                        <div style="float:left; text-align:left">
-                                                            <div class="media-body mr-2">
-                                                                <h5 class="text-primary mb-0 mt-1">Ingredia Nutrisha</h5>
-                                                                <p>Selamat siang, saya akan membicarakan tentang hal hal yang bisa menyebabkan mental illness</p>
-                                                            </div>
-                                                        </div>
-                                                        <div style="float:right; text-align:right">
-                                                            <div class="media-body mr-2">
-                                                                <h5 class="text-primary mb-0 mt-1">Mail</h5>
-                                                                <p>topiknya menarik</p>
-                                                            </div>
-                                                        </div>
-                                                        <div style="float:left; text-align:left">
-                                                            <div class="media-body mr-2">
-                                                                <h5 class="text-primary mb-0 mt-1">Ingredia Nutrisha</h5>
-                                                                <p>Selamat siang, saya akan membicarakan tentang hal hal yang bisa menyebabkan mental illness</p>
-                                                            </div>
-                                                        </div>
-                                                        <div style="float:right; text-align:right">
-                                                            <div class="media-body mr-2">
-                                                                <h5 class="text-primary mb-0 mt-1">Mail</h5>
-                                                                <p>topiknya menarik</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
+                                <div id="DZ_W_TimeLine" class="widget-timeline dz-scroll" style="height:600px">
+                                    <div class="d-flex justify-content-start mb-4">
+                                        <div class="msg_cotainer">
+                                            <b>Dr Istiana</b> </br>
+                                            Hi, how are you samim?
+                                            <span class="msg_time">8:40 AM, Today</span>
                                         </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end mb-4">
+                                        <div class="msg_cotainer_send">
+                                            <b>Dr Istiana</b> </br>
+                                            Hi Khalid i am good tnx how about you?
+                                            <span class="msg_time_send">8:55 AM, Today</span>
+                                        </div>
+                                     </div>
+                                    <div class="d-flex justify-content-start mb-4">
+                                        <div class="msg_cotainer">
+                                            <b>Dr Istiana</b> </br>
+                                            I am good too, thank you for your chat template
+                                            <span class="msg_time">9:00 AM, Today</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end mb-4">
+                                        <div class="msg_cotainer_send">
+                                            <b>Dr Istiana</b> </br>
+                                            You are welcome
+                                            <span class="msg_time_send">9:05 AM, Today</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-start mb-4">
+                                        <div class="msg_cotainer">
+                                            <b>Dr Istiana</b> </br>
+                                            I am looking for your next templates
+                                            <span class="msg_time">9:07 AM, Today</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end mb-4">
+                                        <div class="msg_cotainer_send">
+                                            <b>Dr Istiana</b> </br>
+                                            Ok, thank you have a good day
+                                            <span class="msg_time_send">9:10 AM, Today</span>
+                                        </div>
+                                    </div>
+                                   
+                                </div>   
                             </div>
                         </div>
                     </div>

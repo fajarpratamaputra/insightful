@@ -24,9 +24,9 @@
                             <div class="card-body">
                                 <div id="DZ_W_TimeLine" class="widget-timeline dz-scroll" style="height:370px;">
                                     <ul class="timeline">
-									<?php 
-										foreach ($last_karyawan as $karyawan) {										
-									?>
+                                        <?php 
+                                          foreach ($last_karyawan as $karyawan) {										
+                                        ?>
                                         <li>
                                             <div class="timeline-badge primary"></div>
                                             <a class="timeline-panel text-muted" href="#">
@@ -34,7 +34,7 @@
                                                 <h6 class="mb-0"><?=$karyawan->username?> telah login.</h6>
                                             </a>
                                         </li>
-									<?php } ?>
+								                      	<?php } ?>
                                     </ul>
                                 </div>
                             </div>
