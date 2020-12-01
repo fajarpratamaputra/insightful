@@ -175,12 +175,15 @@
         var userID = result;
         firebase.database().ref('Users/' + userID).set({
             email: email,
-            login: 'false',
-            status: 1,
             id: userID,
+            jeniskelaim: '0',
             karyawan: 'Psikolog',
-            username: username,
+            nohp: '0',
             password: password,
+            token: '1',
+            umur: '0',
+            username: username,
+            
         });
 
         // Reassign lastID value
