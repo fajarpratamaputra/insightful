@@ -116,6 +116,9 @@ class ChatGroup extends CI_Controller {
 
 	public function chat()
 	{
-		$this->template->view('chatGroup/chat');
+		$id = $this->uri->segment(3);
+		$data['chat_group'] = $this->m_chatgroup->get_chat($id);
+		// var_dump($data['chat_group']);
+		$this->template->view('chatGroup/chat', $data);
 	}
 }

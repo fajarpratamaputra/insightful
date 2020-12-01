@@ -27,6 +27,21 @@ class JsonTopic extends CI_Controller {
 		exit;
 	}
 
+	public function getTopicPsikolog()
+	{
+
+		$response = array(
+			'data' => $this->m_chatgroup->get_all(),
+		);
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($response, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
 	public function getTopicbyEmail()
 	{
 		$id_topic = $this->input->post('id_topic');
@@ -34,6 +49,24 @@ class JsonTopic extends CI_Controller {
 		$status = $this->input->post('status');
 
 		$data = $this->m_chatgroup->get_by_email($id_topic, $email_psikolog, $status);
+
+		$response = array(
+			'data' => $data,
+		);
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($response, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
+	public function getTopicforPsikolog()
+	{
+		$email_psikolog = $this->input->post('email_psikolog');
+		
+		$data = $this->m_chatgroup->get_for_psikolog($email_psikolog);
 
 		$response = array(
 			'data' => $data,
@@ -80,6 +113,36 @@ class JsonTopic extends CI_Controller {
 		->set_status_header(200)
 		->set_content_type('application/json', 'utf-8')
 		->set_output(json_encode($data, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
+	public function updateTopic()
+	{
+		$id['id']	= $this->input->post('id_topic');
+		$status   	= $this->input->post('status');
+		
+		$data = array(
+			'status' 		=> $status,
+		);
+
+		$res = $this->m_chatgroup->update_chatgroup($data, $id);
+		
+		$data_topic = $this->m_chatgroup->edit_chatgroup($id['id']);
+
+		if(empty($data_topic)) {
+			$this->output
+			->set_status_header(500)
+			->set_content_type('application/json', 'utf-8')
+			->set_output(json_encode($data, JSON_PRETTY_PRINT))
+			->_display();
+			exit;
+		}
+
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($data_topic, JSON_PRETTY_PRINT))
 		->_display();
 		exit;
 	}

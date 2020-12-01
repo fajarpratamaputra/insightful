@@ -12,49 +12,32 @@
                         <div class="card">
                             <div class="card-body">
                                 <div id="DZ_W_TimeLine" class="widget-timeline dz-scroll" style="height:600px">
+                                    <?php
+                                        $no = 0;
+                                        foreach($chat_group as $cp){
+                                            if($cp->karyawan == 'Psikolog') {
+                                    ?>
+
                                     <div class="d-flex justify-content-start mb-4">
                                         <div class="msg_cotainer">
-                                            <b>Dr Istiana</b> </br>
-                                            Hi, how are you samim?
-                                            <span class="msg_time">8:40 AM, Today</span>
+                                            <b><?=$cp->username?></b> </br>
+                                            <?=$cp->chat?>
+                                           <br> <span class="msg_time"><h6><?=date('D, M Y H:i', strtotime($cp->datetime))?></h6></span>
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-end mb-4">
+
+                                    <?php } elseif(($cp->karyawan == 'Karyawan') || ($cp->karyawan == 'Non-Karyawan')) { ?>
+                                    <div class="d-flex justify-content-end mb-4" style="text-align:right;">
                                         <div class="msg_cotainer_send">
-                                            <b>Dr Istiana</b> </br>
-                                            Hi Khalid i am good tnx how about you?
-                                            <span class="msg_time_send">8:55 AM, Today</span>
+                                            <b><?=$cp->username?></b> </br>
+                                            <?=$cp->chat?>
+                                            <br><span class="msg_time_send"><h6><?=date('D, M Y H:i', strtotime($cp->datetime))?></h6></span>
                                         </div>
                                      </div>
-                                    <div class="d-flex justify-content-start mb-4">
-                                        <div class="msg_cotainer">
-                                            <b>Dr Istiana</b> </br>
-                                            I am good too, thank you for your chat template
-                                            <span class="msg_time">9:00 AM, Today</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-end mb-4">
-                                        <div class="msg_cotainer_send">
-                                            <b>Dr Istiana</b> </br>
-                                            You are welcome
-                                            <span class="msg_time_send">9:05 AM, Today</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-start mb-4">
-                                        <div class="msg_cotainer">
-                                            <b>Dr Istiana</b> </br>
-                                            I am looking for your next templates
-                                            <span class="msg_time">9:07 AM, Today</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-end mb-4">
-                                        <div class="msg_cotainer_send">
-                                            <b>Dr Istiana</b> </br>
-                                            Ok, thank you have a good day
-                                            <span class="msg_time_send">9:10 AM, Today</span>
-                                        </div>
-                                    </div>
-                                   
+                                    <?php 
+                                            } 
+                                        } 
+                                    ?>
                                 </div>   
                             </div>
                         </div>

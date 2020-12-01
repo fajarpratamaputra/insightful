@@ -24,6 +24,18 @@ class M_chatgroup extends CI_model{
         return $query->row();
     }
 
+    public function get_for_psikolog($email) {
+        $query = $this->db->where('psycologist_id', $email)
+                ->get($this->table);
+        return $query->row();
+    }
+
+    public function get_chat($id) {
+        $query = $this->db->where('id_topic', $id)
+                ->get($this->table_chat);
+        return $query->result();
+    }
+
     public function add_chatgroup($data) {
         $insert = $this->db->insert($this->table, $data);
         if ($insert) :
@@ -40,10 +52,10 @@ class M_chatgroup extends CI_model{
 
     public function update_chatgroup($data, $id)
 	{
-		$query = $this->db->update($this->table, $data, $id);
+        $query = $this->db->update($this->table, $data, $id);
 
     }
-    
+
     public function delete_chatgroup($id)
 	{
 		$query = $this->db->delete($this->table, $id);
