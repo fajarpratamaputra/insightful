@@ -20,7 +20,7 @@
                 <!-- <img class="logo-abbr" src="<?=base_url('assets')?>/images/logo.png" alt="">
                 <img class="logo-compact" src="<?=base_url('assets')?>/images/logo-text.png" alt="">
                 <img class="brand-title" src="<?=base_url('assets')?>/images/logo-text.png" alt=""> -->
-				Prototype
+				Insightful
             </a>
 
             <div class="nav-control">

@@ -58,7 +58,7 @@
                     </li>
                 </ul>
 				<div class="copyright">
-					<p>Prototype</p>
+					<p>Insightful</p>
 				</div>
 			</div>
         </div>
