@@ -119,15 +119,15 @@ class JsonMood extends CI_Controller {
 			'date' 				=> $datetime,
 		);
 		$res = null;
-		foreach($mood_all as $ma) {
-			if(($email == $ma->employee_email) && ($datetime == date('Y-m-d', strtotime($ma->date)))) {
-				$id_mood = $this->db->where('employee_email', $email)->limit('1')->get('mood_record')->row();
-				$id['id'] = $id_mood->id;
-				$res = $this->m_mood->update_mood($data, $id);
-			} else {
-				$res = $this->m_mood->add_mood($data);
-			}
+		$id_mood = $this->db->get_where('mood_record',array('employee_email'=>$email,'date'=>$datetime));
+    	if($id_mood->num_rows() > 0) {
+			$mood_c = $id_mood->row();
+			$id['id'] = $mood_c->id;
+			$res = $this->m_mood->update_mood($data, $id);
+		} else {
+			$res = $this->m_mood->add_mood($data);
 		}
+
 
 		if(empty($data)) {
 			$this->output
