@@ -164,30 +164,65 @@
             // [END_EXCLUDE]
         });
 
+        // var user = firebase.auth().currentUser;
+        // var uid;
+        // if (user != null) {
+        //     uid = user.uid;
+        // }
+
         //logic random
-        var result           = '';
-        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var charactersLength = characters.length;
-        for ( var i = 0; i < 28; i++ ) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
+        // var result           = '';
+        // var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        // var charactersLength = characters.length;
+        // for ( var i = 0; i < 28; i++ ) {
+        //     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        // }
 
-        var userID = result;
-        firebase.database().ref('Users/' + userID).set({
-            email: email,
-            id: userID,
-            jeniskelaim: '0',
-            karyawan: 'Psikolog',
-            nohp: '0',
-            password: password,
-            token: '1',
-            umur: '0',
-            username: username,
+        // var userID = user.uid;
+        // firebase.database().ref('Users/' + userID).set({
+        //     email: email,
+        //     id: userID,
+        //     jeniskelaim: '0',
+        //     karyawan: 'Karyawan',
+        //     nohp: '0',
+        //     password: password,
+        //     token: '1',
+        //     umur: '0',
+        //     username: username,
             
-        });
+        // });
 
+        firebase.auth().createUserWithEmailAndPassword(email, password).then((success) => {
+            var user = firebase.auth().currentUser;
+            var uid;
+            if (user != null) {
+                uid = user.uid;
+            }
+            var firebaseRef = firebase.database().ref('Users/');
+            var userData = {
+                email: email,
+                id: uid,
+                jeniskelaim: '0',
+                karyawan: 'Psikolog',
+                nohp: '0',
+                password: password,
+                token: '1',
+                umur: '0',
+            }
+            firebaseRef.child(uid).set(userData);
+            swal('Your Account Created','Your account was created successfully, you can log in now.')
+        }).catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            swal({
+                type: 'error',
+                title: 'Error',
+                text: "Error",
+            })
+        });
         // Reassign lastID value
-        lastIndex = userID;
+        // lastIndex = userID;
         $("#addStudent input").val("");
         // menampilkan alert
         alert("Berhasil menambah data");
