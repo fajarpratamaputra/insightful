@@ -209,7 +209,7 @@
                 token: '1',
                 umur: '0',
             }
-            firebaseRef.child(uid).set(userData);
+            firebaseRef.child(uid).push(userData);
             swal('Your Account Created','Your account was created successfully, you can log in now.')
         }).catch((error) => {
             // Handle Errors here.
