@@ -190,10 +190,12 @@
         var postData = {
             username: values[0].value,
             email: values[1].value,
-            phone: values[2].value,
+            nohp: values[2].value,
             id: values[3].value,
-            karyawan: 'Psikolog',
+            karyawan: "Karyawan",
             password: values[4].value,
+            umur: "0",
+            jeniskelamin: "L/P"
         };
         var updates = {};
         updates['/Users/' + updateID] = postData;
@@ -214,6 +216,7 @@
         var values = $(".users-remove-record-model").serializeArray();
         var id = values[0].value;
         firebase.database().ref('Users/' + id).remove();
+        firebase.auth().getUser(id).delete();
         $('body').find('.users-remove-record-model').find("input").remove();
         // menyembunyikan modal
         $("#remove-modal").modal('hide');

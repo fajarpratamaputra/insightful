@@ -150,48 +150,6 @@
         var email = values[1].value;
         var password = values[2].value;
         
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // [START_EXCLUDE]
-            if (errorCode == 'auth/weak-password') {
-                alert('The password is too weak.');
-            } else {
-                alert(errorMessage);
-            }
-            console.log(error);
-            // [END_EXCLUDE]
-        });
-
-        // var user = firebase.auth().currentUser;
-        // var uid;
-        // if (user != null) {
-        //     uid = user.uid;
-        // }
-
-        //logic random
-        // var result           = '';
-        // var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        // var charactersLength = characters.length;
-        // for ( var i = 0; i < 28; i++ ) {
-        //     result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        // }
-
-        // var userID = user.uid;
-        // firebase.database().ref('Users/' + userID).set({
-        //     email: email,
-        //     id: userID,
-        //     jeniskelaim: '0',
-        //     karyawan: 'Karyawan',
-        //     nohp: '0',
-        //     password: password,
-        //     token: '1',
-        //     umur: '0',
-        //     username: username,
-            
-        // });
-
         firebase.auth().createUserWithEmailAndPassword(email, password).then((success) => {
             var user = firebase.auth().currentUser;
             var uid;
@@ -202,14 +160,14 @@
             var userData = {
                 email: email,
                 id: uid,
-                jeniskelaim: '0',
-                karyawan: 'Psikolog',
-                nohp: '0',
+                jeniskelamin: "0",
+                karyawan: "Psikolog",
+                nohp: "0",
                 password: password,
-                token: '1',
-                umur: '0',
+                umur: "0",
+                username: username
             }
-            firebaseRef.child(uid).push(userData);
+            firebaseRef.child(uid).set(userData);
             swal('Your Account Created','Your account was created successfully, you can log in now.')
         }).catch((error) => {
             // Handle Errors here.
@@ -221,6 +179,7 @@
                 text: "Error",
             })
         });
+        
         // Reassign lastID value
         // lastIndex = userID;
         $("#addStudent input").val("");
@@ -264,10 +223,12 @@
         var postData = {
             username: values[0].value,
             email: values[1].value,
-            phone: values[2].value,
+            jeniskelamin: "0",
+            nohp: values[2].value,
             id: values[3].value,
             karyawan: 'Psikolog',
             password: values[4].value,
+            umur: "0",
         };
         var updates = {};
         updates['/Users/' + updateID] = postData;
@@ -287,7 +248,10 @@
     $('.deleteStudent').on('click', function () {
         var values = $(".users-remove-record-model").serializeArray();
         var id = values[0].value;
-        firebase.database().ref('Users/' + id).remove();
+        // firebase.database().ref('Users/' + id).remove();
+        firebase.database().ref('Users/' + id).on('value', function (snapshot) {
+            var values = snapshot.val();
+        });
         $('body').find('.users-remove-record-model').find("input").remove();
         // menyembunyikan modal
         $("#remove-modal").modal('hide');
