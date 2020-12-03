@@ -29,7 +29,7 @@
                                 <div id="accordion-one" class="accordion accordion-primary">
                                     <div class="accordion__item">
                                         <div class="accordion__header rounded-lg" data-toggle="collapse" data-target="#default_collapseOne">
-                                            <span class="accordion__header--text">Hasil Konsultasi</span>
+                                            <span class="accordion__header--text"><?php $consul->email_psikolog ?></span>
                                             <span class="accordion__header--indicator"></span>
                                         </div>
                                         <div id="default_collapseOne" class="collapse accordion__body show" data-parent="#accordion-one">

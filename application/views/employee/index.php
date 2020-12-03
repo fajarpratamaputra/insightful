@@ -5,7 +5,7 @@
     
     <div class="card">
         <div class="card-body">
-            <div class="table-responsive">
+            <div id="DZ_W_TimeLine" class="widget-timeline dz-scroll" style="height:600px">
                 <table class="table table-hover table-responsive-sm">
                     <thead>
                         <tr>
@@ -100,11 +100,12 @@
     var lastIndex = 0;
 
     // Get Data
-    firebase.database().ref('Users/').orderByChild("karyawan").equalTo("Karyawan").on('value', function (snapshot) {
+    firebase.database().ref('Users/')
+        .on('value', function (snapshot) {
         var value = snapshot.val();
         var htmls = [];
         $.each(value, function (index, value) {
-            if (value) {
+            if (value.karyawan != 'Psikolog') {
                 htmls.push('<tr>\
                 <td>' + value.username + '</td>\
                 <td>' + value.email + '</td>\
