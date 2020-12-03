@@ -215,8 +215,19 @@
     $('.deleteStudent').on('click', function () {
         var values = $(".users-remove-record-model").serializeArray();
         var id = values[0].value;
+        firebase.database().ref('Users/' + id).on('value', function (snapshot) {
+            var values = snapshot.val();
+            firebase.auth().signInWithEmailAndPassword(values.email, values.password)
+                .then((user) => {
+                    firebase.auth().currentUser.delete();              
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                });
+
+        });
         firebase.database().ref('Users/' + id).remove();
-        firebase.auth().getUser(id).delete();
         $('body').find('.users-remove-record-model').find("input").remove();
         // menyembunyikan modal
         $("#remove-modal").modal('hide');
