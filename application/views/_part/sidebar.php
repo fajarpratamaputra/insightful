@@ -18,7 +18,7 @@
                     </li>
 					<li><a class="ai-icon" href="<?=base_url()?>employee" aria-expanded="false">
 							<i class="flaticon-381-network"></i>
-							<span class="nav-text">Employee</span>
+							<span class="nav-text">Users</span>
 						</a>
                     </li>
                     <li><a class="ai-icon" href="<?=base_url()?>hr" aria-expanded="false">
