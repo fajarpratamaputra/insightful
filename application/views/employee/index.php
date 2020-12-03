@@ -1,7 +1,7 @@
 <div class="content-body">
 
 <div class="container" style="margin-top: 50px;">
-    <h5># Data Emaployee</h5>
+    <h5># Data Users</h5>
     
     <div class="card">
         <div class="card-body">
