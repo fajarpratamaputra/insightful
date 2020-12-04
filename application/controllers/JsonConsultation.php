@@ -39,6 +39,8 @@ class JsonConsultation extends CI_Controller {
 	public function insertConsultation()
 	{
 		$email_user 	 = $this->input->post('email_user');
+		$username_user 	 = $this->input->post('username_user');
+		$username_psikolog 	 = $this->input->post('username_psikolog');
 		$email_psikolog  = $this->input->post('email_psikolog');
 		$token_psikolog  = $this->input->post('token_psikolog');
 		$report 		 = $this->input->post('report');
@@ -46,6 +48,8 @@ class JsonConsultation extends CI_Controller {
 		$data = array(
 			'email_user' 		=> $email_user,
 			'email_psikolog' 	=> $email_psikolog,
+			'username_user' 	=> $username_user,
+			'username_psikolog' => $username_psikolog,
 			'token_psikolog' 	=> $token_psikolog,
 			'report' 			=> $report,
 			'datetime'			=> date('Y-m-d H:i:s')
