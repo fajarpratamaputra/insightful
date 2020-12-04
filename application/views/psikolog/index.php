@@ -226,7 +226,7 @@
             jeniskelamin: "0",
             nohp: values[2].value,
             id: values[3].value,
-            karyawan: 'Psikolog',
+            karyawan: "Psikolog",
             password: values[4].value,
             umur: "0",
         };
