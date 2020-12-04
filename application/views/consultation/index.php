@@ -25,7 +25,7 @@
 											?>
                                             <tr>
                                                 <td><?=$no++?></td>
-                                                <td><?=$consul->email_user?></td>
+                                                <td><?=$consul->username_user?></td>
                                                 <td><a href="<?=base_url('consultation/detailConsultation?email='.$consul->email_user)?>" class="btn btn-warning btn-sm px-4">Detail</a></td>                                    
                                             </tr>
                                             <?php } ?>
