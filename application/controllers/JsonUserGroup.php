@@ -50,7 +50,7 @@ class JsonUserGroup extends CI_Controller {
 	{
 		$date = date('Y-m-d');
 		$time = strtotime(date('H:i:s'));
-		$group = $this->db->query("SELECT * FROM category_chat_group where status = 0 and date = '$date' order by id ASC limit 1")->row();
+		$group = $this->db->query("SELECT * FROM category_chat_group where status = 1 and date = '$date' order by id ASC limit 1")->row();
 		
 		if(!empty($group)) {
 			$time_group = strtotime($group->time);
@@ -60,7 +60,7 @@ class JsonUserGroup extends CI_Controller {
 			var_dump($menit);
 	
 			if(($menit >= 0) && ($menit <= 120)) {
-				$group = $this->db->query("UPDATE category_chat_group SET status = 1 where status = 0 and date = '$date' order by id ASC limit 1");
+				$group = $this->db->query("UPDATE category_chat_group SET status = 2 where status = 1 and date = '$date' order by id ASC limit 1");
 			
 				$usergroup = $this->db->query("SELECT * FROM user_chat_group where id_topic = 17 order by id ASC")->result();
 	
