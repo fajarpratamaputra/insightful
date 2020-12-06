@@ -11,6 +11,11 @@ class JsonUserGroup extends CI_Controller {
 		date_default_timezone_set("Asia/Makassar");
 	}
 
+	public function updateStatus()
+	{
+		$this->load->view('firebase/updateStatus');
+	}
+
 	public function insertUserChatGroup()
 	{
 		$uid_topic 	= $this->input->post('uid_topic');
@@ -59,8 +64,7 @@ class JsonUserGroup extends CI_Controller {
 			$menit = $diff - $jam * (60 * 60);
 			var_dump($menit);
 	
-			if(($menit >= 0) && ($menit <= 120)) {
-				$group = $this->db->query("UPDATE category_chat_group SET status = 2 where status = 1 and date = '$date' order by id ASC limit 1");
+			if(($menit >= 0) && ($menit <= 360)) {
 			
 				$usergroup = $this->db->query("SELECT * FROM user_chat_group where id_topic = 17 order by id ASC")->result();
 	
@@ -96,6 +100,8 @@ class JsonUserGroup extends CI_Controller {
 	
 					curl_close($curl);
 			}
+
+			$group = $this->db->query("UPDATE category_chat_group SET status = 2 where status = 1 and date = '$date' order by id ASC limit 1");
 		}
 		
 
