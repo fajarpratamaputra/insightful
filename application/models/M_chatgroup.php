@@ -7,6 +7,7 @@ class M_chatgroup extends CI_model{
         parent::__construct();
         $this->table = "category_chat_group";
         $this->table_chat = "chat_group";
+        $this->table_group_chat = "user_chat_group";
     }
 
     public function get_all() {
@@ -70,6 +71,13 @@ class M_chatgroup extends CI_model{
     
     public function add_chat($data) {
         $insert = $this->db->insert($this->table_chat, $data);
+        if ($insert) :
+            return $this->db->insert_id();
+        endif;
+    }
+
+    public function add_userchatgroup($data) {
+        $insert = $this->db->insert($this->table_group_chat, $data);
         if ($insert) :
             return $this->db->insert_id();
         endif;
