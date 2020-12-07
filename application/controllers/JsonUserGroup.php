@@ -88,7 +88,7 @@ class JsonUserGroup extends CI_Controller {
 	
 			if(($menit >= 0) && ($menit <= 360)) {
 			
-				$usergroup = $this->db->query("SELECT * FROM user_chat_group where id_topic = 17 order by id ASC")->result();
+				$usergroup = $this->db->query("SELECT * FROM user_chat_group where id_topic = '$group->id' order by id ASC")->result();
 	
 				foreach ($usergroup as $ugroup) {
 					$token_deivce = $ugroup->token;
@@ -125,29 +125,28 @@ class JsonUserGroup extends CI_Controller {
 			}
 
 			$update = $this->db->query("UPDATE category_chat_group SET status = 2 where status = 1 and date = '$date' order by id ASC limit 1");
+			$url = "https://insightful-official.firebaseio.com/ChatGroups/$id.json";
+			$curl_update = curl_init();
+
+			curl_setopt_array($curl_update, array(
+			CURLOPT_URL => $url,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "PATCH",
+			CURLOPT_POSTFIELDS =>"{\n  \"status\": \"2\"\n}",
+			CURLOPT_HTTPHEADER => array(
+				"Content-Type: text/plain"
+			),
+			));
+
+			$response = curl_exec($curl_update);
+
+			curl_close($curl_update);
 		}
-
-		$url = "https://insightful-official.firebaseio.com/ChatGroups/$id.json";
-		$curl_update = curl_init();
-
-		curl_setopt_array($curl_update, array(
-		CURLOPT_URL => $url,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_ENCODING => "",
-		CURLOPT_MAXREDIRS => 10,
-		CURLOPT_TIMEOUT => 0,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		CURLOPT_CUSTOMREQUEST => "PATCH",
-		CURLOPT_POSTFIELDS =>"{\n  \"status\": \"2\"\n}",
-		CURLOPT_HTTPHEADER => array(
-			"Content-Type: text/plain"
-		),
-		));
-
-		$response = curl_exec($curl_update);
-
-		curl_close($curl_update);
 		
 
 		// if(empty($res)) {
