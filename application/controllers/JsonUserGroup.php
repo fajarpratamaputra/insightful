@@ -85,14 +85,14 @@ class JsonUserGroup extends CI_Controller {
 			$jam   = floor($diff / (60 * 60));
 			$menit = $diff - $jam * (60 * 60);
 			var_dump($menit);
-	
+			$id = $ugroup->uid_topic;
 			if(($menit >= 0) && ($menit <= 360)) {
 			
 				$usergroup = $this->db->query("SELECT * FROM user_chat_group where id_topic = '$group->id' order by id ASC")->result();
 	
 				foreach ($usergroup as $ugroup) {
 					$token_deivce = $ugroup->token;
-					$id = $ugroup->uid_topic;
+					
 					$token = '"'.$token_deivce.'"';
 					$curl = curl_init();
 	
