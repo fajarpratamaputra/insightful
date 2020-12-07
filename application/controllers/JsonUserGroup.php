@@ -88,11 +88,11 @@ class JsonUserGroup extends CI_Controller {
 			// $id = $group->uid_topic;
 			if(($menit >= 0) && ($menit <= 360)) {
 			
-				$usergroup = $this->db->query("SELECT * FROM user_chat_group where id_topic = '19' order by id ASC")->result();
+				$usergroup = $this->db->query("SELECT * FROM user_chat_group where id_topic = '$group->id' order by id ASC")->result();
 	
 				foreach ($usergroup as $ugroup) {
 					$token_deivce = $ugroup->token;
-					
+					$id = $ugroup->uid_topic;
 					$token = '"'.$token_deivce.'"';
 					$curl = curl_init();
 	
@@ -119,33 +119,37 @@ class JsonUserGroup extends CI_Controller {
 					));
 	
 					$response = curl_exec($curl);	
-					}
+				}
 	
-					curl_close($curl);
+				curl_close($curl);
+
+				if(!empty($usergroup)){
+						$url = "https://insightful-official.firebaseio.com/ChatGroups/$id.json";
+						$curl_update = curl_init();
+
+						curl_setopt_array($curl_update, array(
+						CURLOPT_URL => $url,
+						CURLOPT_RETURNTRANSFER => true,
+						CURLOPT_ENCODING => "",
+						CURLOPT_MAXREDIRS => 10,
+						CURLOPT_TIMEOUT => 0,
+						CURLOPT_FOLLOWLOCATION => true,
+						CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+						CURLOPT_CUSTOMREQUEST => "PATCH",
+						CURLOPT_POSTFIELDS =>"{\n  \"status\": \"2\"\n}",
+						CURLOPT_HTTPHEADER => array(
+							"Content-Type: text/plain"
+						),
+						));
+
+						$response = curl_exec($curl_update);
+
+						curl_close($curl_update);
+				}
+				$update = $this->db->query("UPDATE category_chat_group SET status = 2 where status = 1 and date = '$date' order by id ASC limit 1");
+			
 			}
-
-			$update = $this->db->query("UPDATE category_chat_group SET status = 2 where status = 1 and date = '$date' order by id ASC limit 1");
-			$url = "https://insightful-official.firebaseio.com/ChatGroups/wTq6E1xBK8NJibcmCkUbFIiQ8I42.json";
-			$curl_update = curl_init();
-
-			curl_setopt_array($curl_update, array(
-			CURLOPT_URL => $url,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => "",
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 0,
-			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => "PATCH",
-			CURLOPT_POSTFIELDS =>"{\n  \"status\": \"2\"\n}",
-			CURLOPT_HTTPHEADER => array(
-				"Content-Type: text/plain"
-			),
-			));
-
-			$response = curl_exec($curl_update);
-
-			curl_close($curl_update);
+			
 		}
 		
 
