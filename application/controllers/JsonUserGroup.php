@@ -13,7 +13,29 @@ class JsonUserGroup extends CI_Controller {
 
 	public function updateStatus()
 	{
-		$this->load->view('firebase/updateStatus');
+		$id = 'wTq6E1xBK8NJibcmCkUbFIiQ8I42';
+		$url = "https://insightful-official.firebaseio.com/ChatGroups/$id.json";
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => $url,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => "",
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "PATCH",
+		CURLOPT_POSTFIELDS =>"{\n  \"status\": \"2\"\n}",
+		CURLOPT_HTTPHEADER => array(
+			"Content-Type: text/plain"
+		),
+		));
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+		echo $response;
 	}
 
 	public function insertUserChatGroup()
@@ -70,6 +92,7 @@ class JsonUserGroup extends CI_Controller {
 	
 				foreach ($usergroup as $ugroup) {
 					$token_deivce = $ugroup->token;
+					$id = $ugroup->uid_topic;
 					$token = '"'.$token_deivce.'"';
 					$curl = curl_init();
 	
@@ -101,8 +124,30 @@ class JsonUserGroup extends CI_Controller {
 					curl_close($curl);
 			}
 
-			$group = $this->db->query("UPDATE category_chat_group SET status = 2 where status = 1 and date = '$date' order by id ASC limit 1");
+			$update = $this->db->query("UPDATE category_chat_group SET status = 2 where status = 1 and date = '$date' order by id ASC limit 1");
 		}
+
+		$url = "https://insightful-official.firebaseio.com/ChatGroups/$id.json";
+		$curl_update = curl_init();
+
+		curl_setopt_array($curl_update, array(
+		CURLOPT_URL => $url,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => "",
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "PATCH",
+		CURLOPT_POSTFIELDS =>"{\n  \"status\": \"2\"\n}",
+		CURLOPT_HTTPHEADER => array(
+			"Content-Type: text/plain"
+		),
+		));
+
+		$response = curl_exec($curl_update);
+
+		curl_close($curl_update);
 		
 
 		// if(empty($res)) {
