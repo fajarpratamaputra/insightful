@@ -85,10 +85,10 @@ class JsonUserGroup extends CI_Controller {
 			$jam   = floor($diff / (60 * 60));
 			$menit = $diff - $jam * (60 * 60);
 			var_dump($menit);
-			$id = $group->uid_topic;
+			// $id = $group->uid_topic;
 			if(($menit >= 0) && ($menit <= 360)) {
 			
-				$usergroup = $this->db->query("SELECT * FROM user_chat_group where id_topic = '$group->id' order by id ASC")->result();
+				$usergroup = $this->db->query("SELECT * FROM user_chat_group where id_topic = '19' order by id ASC")->result();
 	
 				foreach ($usergroup as $ugroup) {
 					$token_deivce = $ugroup->token;
@@ -125,7 +125,7 @@ class JsonUserGroup extends CI_Controller {
 			}
 
 			$update = $this->db->query("UPDATE category_chat_group SET status = 2 where status = 1 and date = '$date' order by id ASC limit 1");
-			$url = "https://insightful-official.firebaseio.com/ChatGroups/$id.json";
+			$url = "https://insightful-official.firebaseio.com/ChatGroups/wTq6E1xBK8NJibcmCkUbFIiQ8I42.json";
 			$curl_update = curl_init();
 
 			curl_setopt_array($curl_update, array(
