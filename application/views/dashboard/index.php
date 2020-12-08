@@ -72,7 +72,7 @@
 										<i class="la la-file-zip-o"></i>
 									</span>
 									<div class="media-body text-white">
-										<p class="mb-1">Total Downloads</p>
+										<p class="mb-1">Total Downloads Hari ini</p>
                     <?php if(!empty($count_download)) { 
                             $value = $count_download->value; 
                           } else {
