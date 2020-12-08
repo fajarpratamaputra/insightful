@@ -19,13 +19,21 @@ class Analytics extends CI_Controller {
 	public function index()
 	{
 		$date = $this->input->post('date');
-		if(!empty($date)) {
-			$data['graph'] = $this->db->query("select * from analytic where datetime like '$date%' ")->result();
-		}else {
-			$data['graph'] = $this->db->query('select * from analytic')->result();
+		$data['graph'] = Null;
+		$data['all'] = Null;
+		$data['count_search'] = Null;
+		if($this->input->post('submit') == 'all'){
+			$data['all'] = $this->db->query("select name , sum(value) as value from analytic group by name")->result();
+			$data['count'] = $this->db->query('select sum(value) as value from analytic')->row();
+		} else {
+			if(!empty($date)) {
+				$data['graph'] = $this->db->query("select * from analytic where datetime like '$date%' ")->result();
+				$data['count_search'] = $this->db->query("select * from analytic where datetime like '$date%' ")->row();
+			}else {
+				$data['graph'] = $this->db->query('select * from analytic')->result();
+			}
 		}
 		
-		$data['count'] = $this->db->query('select sum(value) from analytic')->row();
 		$data['count_download'] = $this->db->query("SELECT value FROM analytic WHERE name = 'klik'")->row();
 		$this->template->view('analytics/index', $data);
 	}

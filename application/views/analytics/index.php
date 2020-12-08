@@ -15,10 +15,18 @@
                       <label for="">Date</label>
                       <input type="date" name="date" class="form-control input-default " placeholder="date">
                     </div>
-                    <button type="submit" class="btn btn-primary">Search</button>
-                    <button type="submit" class="btn btn-primary">Reset</button>
+                    <button name="submit" type="submit" value="search" class="btn btn-primary">Search</button>
+                    <button name="submit" type="submit" value="all" class="btn btn-primary">All</button>
+                    <button name="submit" type="submit" value="reset" class="btn btn-primary">Reset</button>
                   </form>
                 </div>
+                <?php 
+                    if(!empty($all)) { 
+                      echo "</br><h6>Total download : ".$count->value."</h6>"; 
+                    } elseif(!empty($count_search)) {
+                      echo "</br><h6 style='font-size:10pt;'>Total download Pada ".date('d-m-Y',strtotime($count_search->datetime))." = ".$count_search->value."</h6>"; 
+                    }
+                ?>
               </div>
             </div>
           </div>
@@ -47,9 +55,15 @@
     data: {
         labels: [
           <?php
-            if (count($graph)>0) {
-              foreach ($graph as $data) {
-                echo "'" .date('d-m-Y', strtotime($data->datetime))."',";
+            if(!empty($graph)) {
+              if (count($graph)>0) {
+                foreach ($graph as $data) {
+                  echo "'" .date('d-m-Y', strtotime($data->datetime))."',";
+                }
+              }
+            } else {
+              foreach ($all as $data) {
+                echo "'Total Download',";
               }
             }
           ?>
@@ -60,11 +74,18 @@
             borderColor: '##93C3D2',
             data: [
               <?php
-                if (count($graph)>0) {
-                   foreach ($graph as $data) {
+                if(!empty($graph)){
+                  if (count($graph)>0) {
+                    foreach ($graph as $data) {
+                     echo "'" .($data->value)."',";
+                   }
+                  }
+                }else {
+                  foreach ($all as $data) {
                     echo "'" .($data->value)."',";
                   }
                 }
+                
               ?>
             ]
         }]
