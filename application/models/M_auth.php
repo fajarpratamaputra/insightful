@@ -27,6 +27,7 @@ class M_auth extends CI_model{
     $where = array('Karyawan','Non-Karyawan');
     $query = $this->db->where_in('status', $where)
                 ->order_by('datetime', 'DESC')
+                ->limit('50')
                 ->get('log_login');
     return $query->result();
   }
@@ -34,6 +35,7 @@ class M_auth extends CI_model{
   public function get_log_psikolog() {
     $query = $this->db->where('status', 'Psikolog')
                 ->order_by('datetime', 'DESC')
+                ->limit('50')
                 ->get('log_login');
     return $query->result();
   }
