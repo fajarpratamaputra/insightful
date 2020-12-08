@@ -30,7 +30,7 @@
                     <li>
                       <div class="timeline-badge primary"></div>
                         <a class="timeline-panel text-muted" href="#">
-                          <span><?=date('D M Y', strtotime($karyawan->datetime))?></span>
+                          <span><?=date('d, D M Y', strtotime($karyawan->datetime))?></span>
                           <h6 class="mb-0"><?=$karyawan->username?> telah login.</h6>
                         </a>
                     </li>
@@ -54,7 +54,7 @@
                     <li>
                       <div class="timeline-badge primary"></div>
                         <a class="timeline-panel text-muted" href="#">
-                          <span><?=date('D M Y', strtotime($psikolog->datetime))?></span>
+                          <span><?=date('d, D M Y', strtotime($psikolog->datetime))?></span>
                           <h6 class="mb-0"><?=$psikolog->username?> telah login.</h6>
                         </a>
                     </li>

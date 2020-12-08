@@ -22,7 +22,7 @@ class JsonDownload extends CI_Controller {
 			'datetime' 	=> date('Y-m-d H:i:s'),
 		);
 		if($select->num_rows() > 0){
-			$insert = $this->db->query("UPDATE analytic SET value=value+1 WHERE datetime like '$date%' and  name = 'klik'");
+			$insert = $this->db->query("UPDATE analytic SET value=value+1 WHERE datetime like '$date%' and name = 'klik'");
 		}else {
 			$insert = $this->db->insert('analytic', $data);
 		}
