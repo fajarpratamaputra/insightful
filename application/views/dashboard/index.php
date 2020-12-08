@@ -73,7 +73,13 @@
 									</span>
 									<div class="media-body text-white">
 										<p class="mb-1">Total Downloads</p>
-										<h3 class="text-white"><?=$count_download->value;?></h3>
+                    <?php if(!empty($count_download)) { 
+                            $value = $count_download->value; 
+                          } else {
+                            $value = 0; 
+                          }
+                      ?>
+                    <h3 class="text-white"><?=$value;?></h3>
 									</div>
 								</div>
 							</div>
