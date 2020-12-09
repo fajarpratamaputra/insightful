@@ -32,6 +32,16 @@ class M_kuesioner extends CI_model{
         return $query;
     }
 
+    public function get_by_id($id, $note) {
+        $query = $this->db->where('id', $id)
+                    ->where('note', $note)
+                    ->order_by('id', 'DESC')
+                    ->get($this->table)
+                    ->row();
+        
+        return $query;
+    }
+
     public function add_consultation($data) {
         $insert = $this->db->insert($this->table, $data);
         if ($insert) :

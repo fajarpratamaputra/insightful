@@ -171,6 +171,41 @@ class JsonConsultation extends CI_Controller {
 		exit;
 	}
 
+	public function getKuesionerById()
+	{
+		$id = $this->input->post('id');
+		$note =$this->input->post('note');
+		$kuesioner = $this->m_kuesioner->get_by_id($id, $note);
+		$data['data'] = null; 
+		if(!empty($kuesioner)) {
+			$res = [
+				'id'			=> $kuesioner->id,
+				'email_user' 	=> $kuesioner->email_user,
+				'email_psikolog'=> $kuesioner->email_psikolog,
+				'report' 		=> $kuesioner->report,
+				'datetime' 		=> $kuesioner->datetime
+			];	
+		}
+
+		if(empty($kuesioner)) {
+			$this->output
+			->set_status_header(200)
+			->set_content_type('application/json', 'utf-8')
+			->set_output(json_encode($data, JSON_PRETTY_PRINT))
+			->_display();
+			exit;
+		}
+
+		$data['data'] = $res; 
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($data, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
 	public function getKuesioner()
 	{
 		$email = $this->input->post('email');
