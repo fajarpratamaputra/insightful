@@ -170,5 +170,42 @@ class JsonUserGroup extends CI_Controller {
 		// exit;
 	}
 
+	public function chatCounseling()
+	{
+		$email_user = $this->input->post('email_user');
+		$username_user = $this->input->post('username_user');
+		$pesan = $this->input->post('pesan');
+		$email_psikolog = $this->input->post('email_psikolog');
+		$username_psikolog = $this->input->post('username_psikolog');
+		$datetime = date('Y-m-d H:i:s');
+
+		$data = array(
+			'email_user' 			=> $email_user,
+			'username_user' 		=> $username_user,
+			'message' 				=> $pesan,
+			'email_psikolog' 		=> $email_psikolog,
+			'username_psikolog' 	=> $username_psikolog,
+			'datetime' 				=> $datetime,
+		);
+		
+		$res = $this->m_chatgroup->add_chat_counseling($data);
+
+		if(empty($res)) {
+			$this->output
+			->set_status_header(500)
+			->set_content_type('application/json', 'utf-8')
+			->set_output(json_encode($data, JSON_PRETTY_PRINT))
+			->_display();
+			exit;
+		}
+		
+		$this->output
+		->set_status_header(200)
+		->set_content_type('application/json', 'utf-8')
+		->set_output(json_encode($data, JSON_PRETTY_PRINT))
+		->_display();
+		exit;
+	}
+
 
 }
