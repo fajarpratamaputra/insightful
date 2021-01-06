@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Analytics extends CI_Controller {
+class Downloader extends CI_Controller {
 
 	public function __construct()
 	{
@@ -35,7 +35,7 @@ class Analytics extends CI_Controller {
 		}
 		
 		$data['count_download'] = $this->db->query("SELECT value FROM analytic WHERE name = 'klik'")->row();
-		$this->template->view('analytics/index', $data);
+		$this->template->view('downloader/index', $data);
 	}
 
 }

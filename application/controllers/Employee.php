@@ -8,6 +8,9 @@ class Employee extends CI_Controller {
 		parent ::__construct();
 		//load model
 		$this->load->library('template');
+		if($this->session->userdata('status') != "login"){
+			redirect(base_url("auth"));
+		}
 		date_default_timezone_set("Asia/Makassar");
 	}
 

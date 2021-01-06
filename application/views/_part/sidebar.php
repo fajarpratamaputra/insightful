@@ -51,9 +51,9 @@
 							<span class="nav-text">Report Consultation</span>
 						</a>
                     </li>
-					<li><a class="ai-icon" href="<?=base_url()?>analytics" aria-expanded="false">
+					<li><a class="ai-icon" href="<?=base_url()?>downloader" aria-expanded="false">
 							<i class="flaticon-381-television"></i>
-							<span class="nav-text">Analytics</span>
+							<span class="nav-text">Downloader</span>
 						</a>
                     </li>
                     <li><a class="ai-icon" href="<?=base_url()?>auth/logout" aria-expanded="false">

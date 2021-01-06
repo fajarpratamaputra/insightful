@@ -10,6 +10,9 @@ class News extends CI_Controller {
 		$this->load->model('m_news');
 		$this->load->model('m_category');
 		$this->load->library('template');
+		if($this->session->userdata('status') != "login"){
+			redirect(base_url("auth"));
+		}
 		date_default_timezone_set("Asia/Makassar");
 	}
 

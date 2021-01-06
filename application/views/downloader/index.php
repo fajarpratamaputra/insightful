@@ -10,7 +10,7 @@
               </div>
               <div class="card-body">
                 <div class="basic-form">
-                  <form action="<?=base_url('analytics/index');?>" enctype="multipart/form-data" method="post">
+                  <form action="<?=base_url('downloader/index');?>" enctype="multipart/form-data" method="post">
                     <div class="form-group">
                       <label for="">Date</label>
                       <input type="date" name="date" class="form-control input-default " placeholder="date">

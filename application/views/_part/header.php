@@ -4,7 +4,14 @@
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
                             <div class="dashboard_bar">
-                                Dashboard
+                                <!-- Dashboard -->
+                                <?php 
+                                    $word = $this->uri->segment(1);
+                                    if(empty($word)){
+                                        $word = 'Dashboard';
+                                    }
+                                    echo ucwords($word);
+                                ?>
                             </div>
                         </div>
 
